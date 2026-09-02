@@ -1,20 +1,25 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { type FormEvent, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
   Bird,
+  Check,
   ChevronRight,
   CircleHelp,
   FlaskConical,
   Leaf,
+  Lightbulb,
+  MessageCircleMore,
   Search,
+  Send,
   Sparkles,
   Telescope,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 type TestCard = {
   category: '自然界' | '观察力' | '冷知识' | '奇怪技能';
@@ -80,6 +85,8 @@ type Category = (typeof categories)[number];
 export default function Home() {
   const [category, setCategory] = useState<Category>('全部');
   const [query, setQuery] = useState('');
+  const [ideaStatus, setIdeaStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [feedbackStatus, setFeedbackStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const visibleTests = useMemo(() => {
     const keyword = query.trim().toLowerCase();
@@ -89,6 +96,52 @@ export default function Home() {
       return matchesCategory && matchesQuery;
     });
   }, [category, query]);
+
+  async function submitIdea(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setIdeaStatus('submitting');
+
+    try {
+      const response = await fetch('/api/suggestions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idea: formData.get('idea'),
+          target: formData.get('target'),
+          note: formData.get('note'),
+        }),
+      });
+
+      if (!response.ok) throw new Error('submit failed');
+      form.reset();
+      setIdeaStatus('success');
+    } catch {
+      setIdeaStatus('error');
+    }
+  }
+
+  async function submitFeedback(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setFeedbackStatus('submitting');
+
+    try {
+      const response = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: formData.get('message') }),
+      });
+
+      if (!response.ok) throw new Error('submit failed');
+      form.reset();
+      setFeedbackStatus('success');
+    } catch {
+      setFeedbackStatus('error');
+    }
+  }
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f2e7] text-[#1d2431]">
@@ -102,7 +155,7 @@ export default function Home() {
             <span className="grid size-10 rotate-[-8deg] place-items-center rounded-[14px] bg-[#242a42] text-[#f9d96f] shadow-[4px_4px_0_#f0ad50] transition-transform group-hover:rotate-0"><CircleHelp className="size-5" strokeWidth={2.6} /></span>
             <span className="leading-none"><span className="block text-lg font-black tracking-tight sm:text-xl">不太正经测试中心</span><span className="mt-1 block text-[10px] font-bold tracking-[0.16em] text-[#767b87]">NOT-SO-SERIOUS LAB</span></span>
           </a>
-          <div className="hidden items-center gap-6 text-sm font-bold text-[#565d6b] md:flex"><a href="#tests" className="hover:text-[#252b49]">全部测试</a><a href="#about" className="hover:text-[#252b49]">关于这里</a></div>
+          <div className="hidden items-center gap-6 text-sm font-bold text-[#565d6b] md:flex"><a href="#tests" className="hover:text-[#252b49]">全部测试</a><a href="#ideas" className="hover:text-[#252b49]">一起出题</a><a href="#about" className="hover:text-[#252b49]">关于这里</a></div>
           <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">已收录 02 项</span>
         </header>
 
@@ -134,6 +187,26 @@ export default function Home() {
             const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt={test.imageAlt ?? `${test.title}测试封面`} className="size-full object-cover transition duration-500 group-hover:scale-105" /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
             return test.href ? <a key={test.title} href={test.href} className="group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]">{body}</a> : <article key={test.title} className="rounded-[1.65rem] border border-dashed border-[#c9cbd0] bg-[#fffdf8]/52 p-3">{body}</article>;
           })}</div> : <div className="mt-7 rounded-[1.65rem] border border-dashed border-[#c5c8cf] bg-[#fffdf8]/65 px-6 py-12 text-center"><CircleHelp className="mx-auto size-8 text-[#d85f48]" /><p className="mt-4 font-black text-[#303752]">这项奇怪技能还没被收录。</p><button type="button" onClick={() => { setQuery(''); setCategory('全部'); }} className="mt-3 text-sm font-bold text-[#d85f48] hover:underline">回到全部测试</button></div>}
+        </section>
+
+        <section id="ideas" className="mt-14 scroll-mt-6 overflow-hidden rounded-[2rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 shadow-[0_12px_28px_rgba(43,51,77,.07)]">
+          <div className="grid lg:grid-cols-[.82fr_1.18fr]">
+            <div className="relative overflow-hidden bg-[#252b49] p-7 text-[#fff8e8] sm:p-9">
+              <div aria-hidden="true" className="absolute -right-12 -top-12 size-44 rounded-full bg-[#f4ce67]/20 blur-2xl" />
+              <div className="relative"><span className="inline-flex items-center gap-2 rounded-full bg-[#f4ce67] px-3 py-1.5 text-[10px] font-black tracking-[0.12em] text-[#4b3c21]"><Lightbulb className="size-3.5" /> OPEN CALL</span><h2 className="mt-7 max-w-sm font-serif text-3xl font-black leading-tight tracking-[-0.05em] sm:text-4xl">下一个测试，<br />由你出题。</h2><p className="mt-5 max-w-sm text-sm font-semibold leading-6 text-[#cbd1df]">你想做什么样的测试题？又想考考谁？把一个还没成形的点子丢进来。</p><div className="mt-10 grid gap-3 text-sm"><p className="rounded-2xl border border-white/12 bg-white/8 px-4 py-3 font-bold text-[#f6eecf]">“能不能做一个看云识天气？”</p><p className="rounded-2xl border border-white/12 bg-white/8 px-4 py-3 font-bold text-[#f6eecf]">“我想考考自称懂猫的人。”</p></div></div>
+            </div>
+            <form onSubmit={submitIdea} className="p-7 sm:p-9">
+              <div className="flex items-center justify-between gap-4"><div><p className="text-xs font-black tracking-[0.16em] text-[#d85f48]">灵感投递箱</p><p className="mt-2 text-sm font-semibold text-[#6d7380]">不用留名字，一条想法就够了。</p></div><span className="grid size-11 place-items-center rounded-2xl bg-[#fff0bd] text-[#b56939]"><Send className="size-5" /></span></div>
+              <div className="mt-7 grid gap-5 sm:grid-cols-2"><label className="block text-sm font-black text-[#343952]">我想做一个……<Input name="idea" required minLength={2} maxLength={120} placeholder="例如：看羽毛猜鸟类" className="mt-2 h-11 rounded-xl border-[#d7d7d2] bg-[#fffdf8]" /></label><label className="block text-sm font-black text-[#343952]">我想考考……<Input name="target" required minLength={2} maxLength={80} placeholder="例如：自称自然爱好者的人" className="mt-2 h-11 rounded-xl border-[#d7d7d2] bg-[#fffdf8]" /></label></div>
+              <label className="mt-5 block text-sm font-black text-[#343952]">再补一句（可选）<Textarea name="note" maxLength={360} placeholder="哪里有趣、怎么出题，想到什么都可以写。" className="mt-2 min-h-28 resize-y rounded-xl border-[#d7d7d2] bg-[#fffdf8]" /></label>
+              <div className="mt-6 flex flex-wrap items-center gap-4"><Button type="submit" size="lg" disabled={ideaStatus === 'submitting'} className="h-11 rounded-2xl bg-[#d85f48] px-5 font-black text-white shadow-[3px_3px_0_#f0ad50] hover:bg-[#c5513d]">{ideaStatus === 'submitting' ? '正在投递…' : '把点子投进去'} <Send className="size-4" /></Button><p aria-live="polite" className={`text-sm font-bold ${ideaStatus === 'success' ? 'text-[#4d846a]' : ideaStatus === 'error' ? 'text-[#c55345]' : 'text-[#7b808a]'}`}>{ideaStatus === 'success' ? <span className="inline-flex items-center gap-1.5"><Check className="size-4" />收到，已经放进灵感箱。</span> : ideaStatus === 'error' ? '没投进去，稍后再试一次。' : '好点子会被认真记下。'}</p></div>
+            </form>
+          </div>
+        </section>
+
+        <section id="feedback" className="mt-5 scroll-mt-6 rounded-[2rem] border border-[#2b334d]/12 bg-[#e9e1cf]/70 px-6 py-7 sm:px-9">
+          <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-start"><div><p className="text-xs font-black tracking-[0.16em] text-[#a65843]">PRIVATE NOTE</p><h2 className="mt-2 font-serif text-2xl font-black tracking-[-0.04em] text-[#343952]">对这里有什么意见？</h2><p className="mt-2 max-w-xl text-sm font-semibold leading-6 text-[#6a6b70]">悄悄告诉我就好。不会公开，也不会显示给其他人。</p></div><span className="grid size-12 place-items-center rounded-2xl bg-[#fff9eb] text-[#a65843] shadow-sm"><MessageCircleMore className="size-5" /></span></div>
+          <form onSubmit={submitFeedback} className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-end"><label className="min-w-0 flex-1 text-sm font-black text-[#343952]">匿名意见<Textarea name="message" required minLength={2} maxLength={600} placeholder="比如：题目还想多一点、这里读起来不太顺……" className="mt-2 min-h-24 resize-y rounded-xl border-[#cfc8b9] bg-[#fffdf8]" /></label><div className="flex shrink-0 flex-col gap-2"><Button type="submit" size="lg" disabled={feedbackStatus === 'submitting'} className="h-11 rounded-2xl bg-[#252b49] px-5 font-black text-[#fff9ea] shadow-[3px_3px_0_#d4bd85] hover:bg-[#373f64]">{feedbackStatus === 'submitting' ? '正在发送…' : '只发给站长'} <Send className="size-4" /></Button><p aria-live="polite" className={`max-w-48 text-xs font-bold ${feedbackStatus === 'success' ? 'text-[#4d846a]' : feedbackStatus === 'error' ? 'text-[#c55345]' : 'text-[#7b808a]'}`}>{feedbackStatus === 'success' ? '已送达，不会公开。' : feedbackStatus === 'error' ? '暂时没发出去。' : '不用留联系方式。'}</p></div></form>
         </section>
 
         <section id="about" className="mt-14 grid gap-6 rounded-[2rem] bg-[#e9e1cf]/80 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-9"><div><p className="text-xs font-black tracking-[0.16em] text-[#a65843]">ABOUT THIS PLACE</p><h2 className="mt-2 font-serif text-2xl font-black tracking-[-0.04em] text-[#343952] sm:text-3xl">认真出题，测试不太正经。</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#6a6b70]">我们把那些平时不会有人考你的知识和观察力，做成可以随手玩的题。</p></div><span className="inline-flex h-11 items-center justify-center rounded-2xl bg-[#fff9eb] px-4 text-sm font-black text-[#5e6271] shadow-sm">下一项正在发芽 <Leaf className="ml-2 size-4 text-[#6f9b64]" /></span></section>

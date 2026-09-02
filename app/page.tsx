@@ -24,6 +24,7 @@ type TestCard = {
   state: 'available' | 'soon';
   href?: string;
   image?: string;
+  imageAlt?: string;
   icon: typeof Leaf;
   color: string;
 };
@@ -37,8 +38,21 @@ const tests: TestCard[] = [
     state: 'available',
     href: 'https://mushroom-master-quiz-01a05b.kind-song-3636.chatgpt.site/',
     image: 'https://mushroom-master-quiz-01a05b.kind-song-3636.chatgpt.site/og.png',
+    imageAlt: '蘑菇大师测试封面',
     icon: Leaf,
     color: 'mushroom-card',
+  },
+  {
+    category: '自然界',
+    eyebrow: 'NO. 002 · 20 题',
+    title: '观鸟大师',
+    description: '看野生鸟照片，从四个选项里选出鸟名。',
+    state: 'available',
+    href: 'https://bird-master-quiz.kind-song-3636.chatgpt.site/',
+    image: 'https://bird-master-quiz.kind-song-3636.chatgpt.site/og.png',
+    imageAlt: '观鸟大师测试封面',
+    icon: Bird,
+    color: 'bird-card',
   },
   {
     category: '观察力',
@@ -48,15 +62,6 @@ const tests: TestCard[] = [
     state: 'soon',
     icon: Telescope,
     color: 'tree-card',
-  },
-  {
-    category: '冷知识',
-    eyebrow: 'NEXT UP',
-    title: '鸟鸣记忆库',
-    description: '有些声音你听过，但能认出来吗？',
-    state: 'soon',
-    icon: Bird,
-    color: 'bird-card',
   },
   {
     category: '奇怪技能',
@@ -98,7 +103,7 @@ export default function Home() {
             <span className="leading-none"><span className="block text-lg font-black tracking-tight sm:text-xl">不太正经测试中心</span><span className="mt-1 block text-[10px] font-bold tracking-[0.16em] text-[#767b87]">NOT-SO-SERIOUS LAB</span></span>
           </a>
           <div className="hidden items-center gap-6 text-sm font-bold text-[#565d6b] md:flex"><a href="#tests" className="hover:text-[#252b49]">全部测试</a><a href="#about" className="hover:text-[#252b49]">关于这里</a></div>
-          <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">已收录 01 项</span>
+          <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">已收录 02 项</span>
         </header>
 
         <section id="top" className="grid items-end gap-9 pb-10 pt-16 lg:grid-cols-[1.08fr_.92fr] lg:pb-16 lg:pt-24">
@@ -114,7 +119,7 @@ export default function Home() {
             <div className="rounded-[1.45rem] bg-[#252b49] p-5 text-[#f9f0d9]">
               <div className="flex items-center justify-between"><span className="rounded-full bg-[#f4ce67] px-3 py-1 text-[11px] font-black tracking-[0.1em] text-[#4a3b21]">中心档案</span><span className="text-xs font-bold text-[#aeb5c9]">ISSUE 01</span></div>
               <p className="mt-12 font-serif text-3xl font-black leading-none">把好奇心<br />当作一项技能。</p>
-              <div className="mt-10 grid grid-cols-2 border-t border-white/15 pt-4 text-xs"><div><p className="font-bold text-[#aeb5c9]">当前收录</p><p className="mt-1 text-xl font-black text-[#f4ce67]">01</p></div><div className="border-l border-white/15 pl-4"><p className="font-bold text-[#aeb5c9]">正在筹备</p><p className="mt-1 text-xl font-black text-[#f4ce67]">03</p></div></div>
+              <div className="mt-10 grid grid-cols-2 border-t border-white/15 pt-4 text-xs"><div><p className="font-bold text-[#aeb5c9]">当前收录</p><p className="mt-1 text-xl font-black text-[#f4ce67]">02</p></div><div className="border-l border-white/15 pl-4"><p className="font-bold text-[#aeb5c9]">正在筹备</p><p className="mt-1 text-xl font-black text-[#f4ce67]">02</p></div></div>
             </div>
             <div className="absolute -bottom-5 -left-5 grid size-16 -rotate-12 place-items-center rounded-full border-[5px] border-[#fffdf7] bg-[#d85f48] text-center text-[10px] font-black leading-3 text-white shadow-md">冷门<br />专用</div>
           </aside>
@@ -126,14 +131,14 @@ export default function Home() {
 
           {visibleTests.length > 0 ? <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{visibleTests.map((test) => {
             const Icon = test.icon;
-            const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt="雨林里的蘑菇" className="size-full object-cover transition duration-500 group-hover:scale-105" /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
+            const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt={test.imageAlt ?? `${test.title}测试封面`} className="size-full object-cover transition duration-500 group-hover:scale-105" /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
             return test.href ? <a key={test.title} href={test.href} className="group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]">{body}</a> : <article key={test.title} className="rounded-[1.65rem] border border-dashed border-[#c9cbd0] bg-[#fffdf8]/52 p-3">{body}</article>;
           })}</div> : <div className="mt-7 rounded-[1.65rem] border border-dashed border-[#c5c8cf] bg-[#fffdf8]/65 px-6 py-12 text-center"><CircleHelp className="mx-auto size-8 text-[#d85f48]" /><p className="mt-4 font-black text-[#303752]">这项奇怪技能还没被收录。</p><button type="button" onClick={() => { setQuery(''); setCategory('全部'); }} className="mt-3 text-sm font-bold text-[#d85f48] hover:underline">回到全部测试</button></div>}
         </section>
 
         <section id="about" className="mt-14 grid gap-6 rounded-[2rem] bg-[#e9e1cf]/80 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-9"><div><p className="text-xs font-black tracking-[0.16em] text-[#a65843]">ABOUT THIS PLACE</p><h2 className="mt-2 font-serif text-2xl font-black tracking-[-0.04em] text-[#343952] sm:text-3xl">认真出题，测试不太正经。</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#6a6b70]">我们把那些平时不会有人考你的知识和观察力，做成可以随手玩的题。</p></div><span className="inline-flex h-11 items-center justify-center rounded-2xl bg-[#fff9eb] px-4 text-sm font-black text-[#5e6271] shadow-sm">下一项正在发芽 <Leaf className="ml-2 size-4 text-[#6f9b64]" /></span></section>
 
-        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p>第 01 期 · 蘑菇大师已上线</p></footer>
+        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p>第 02 期 · 观鸟大师已上线</p></footer>
       </div>
     </main>
   );

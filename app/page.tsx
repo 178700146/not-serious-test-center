@@ -180,7 +180,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f7f2e7] text-[#1d2431]">
+    <main className="relative min-h-screen overflow-hidden bg-[#f7f2e7] text-[#1d2431]">
       <div aria-hidden="true" className="paper-grain fixed inset-0 pointer-events-none" />
       <div aria-hidden="true" className="absolute left-[-180px] top-[-150px] size-[460px] rounded-full bg-[#f4ce67]/35 blur-3xl" />
       <div aria-hidden="true" className="absolute right-[-160px] top-[330px] size-[420px] rounded-full bg-[#b5c8ff]/30 blur-3xl" />

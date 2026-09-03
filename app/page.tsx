@@ -37,7 +37,7 @@ type TestCard = {
 const tests: TestCard[] = [
   {
     category: '自然界',
-    eyebrow: 'NO. 001 · 20 题',
+    eyebrow: 'NO. 001 · 50 题库｜10 / 20 题可选',
     title: '蘑菇大师',
     description: '只看一眼，猜猜这朵蘑菇有毒吗？',
     state: 'available',
@@ -49,7 +49,7 @@ const tests: TestCard[] = [
   },
   {
     category: '自然界',
-    eyebrow: 'NO. 002 · 20 题',
+    eyebrow: 'NO. 002 · 50 题库｜10 / 20 题可选',
     title: '观鸟大师',
     description: '看野生鸟照片，从四个选项里选出鸟名。',
     state: 'available',
@@ -61,7 +61,7 @@ const tests: TestCard[] = [
   },
   {
     category: '观察力',
-    eyebrow: 'NO. 003 · 10 题',
+    eyebrow: 'NO. 003 · 50 题库｜10 / 20 题可选',
     title: '奥特曼认脸局',
     description: '看形象，叫出这位光之巨人的名字。',
     state: 'available',
@@ -73,7 +73,7 @@ const tests: TestCard[] = [
   },
   {
     category: '冷知识',
-    eyebrow: 'NO. 004 · 5 题',
+    eyebrow: 'NO. 004 · 50 题库｜10 / 20 题可选',
     title: '奥特曼听声局',
     description: '听叫声，从四个名字里选出这位光之巨人。',
     state: 'available',
@@ -85,7 +85,7 @@ const tests: TestCard[] = [
   },
   {
     category: '观察力',
-    eyebrow: 'NO. 005 · 10 题',
+    eyebrow: 'NO. 005 · 50 题库｜10 / 20 题可选',
     title: '宝可梦剪影局',
     description: '看轮廓，从四个名字里猜出它是谁。',
     state: 'available',
@@ -97,7 +97,7 @@ const tests: TestCard[] = [
   },
   {
     category: '奇怪技能',
-    eyebrow: 'NO. 006 · 10 题',
+    eyebrow: 'NO. 006 · 50 题库｜10 / 20 题可选',
     title: '方言捕手',
     description: '听一段方言，自己写下你猜的省份。',
     state: 'available',

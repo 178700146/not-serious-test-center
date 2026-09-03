@@ -72,6 +72,18 @@ const tests: TestCard[] = [
     color: 'tree-card',
   },
   {
+    category: '冷知识',
+    eyebrow: 'NO. 004 · 5 题',
+    title: '奥特曼听声局',
+    description: '听叫声，从四个名字里选出这位光之巨人。',
+    state: 'available',
+    href: 'https://ultraman-sound-quiz.kind-song-3636.chatgpt.site/',
+    image: 'https://ultraman-sound-quiz.kind-song-3636.chatgpt.site/og.png',
+    imageAlt: '奥特曼听声局测试封面',
+    icon: Sparkles,
+    color: 'scent-card',
+  },
+  {
     category: '观察力',
     eyebrow: 'NEXT UP',
     title: '树影辨认师',
@@ -168,7 +180,7 @@ export default function Home() {
             <span className="leading-none"><span className="block text-lg font-black tracking-tight sm:text-xl">不太正经测试中心</span><span className="mt-1 block text-[10px] font-bold tracking-[0.16em] text-[#767b87]">NOT-SO-SERIOUS LAB</span></span>
           </a>
           <div className="hidden items-center gap-6 text-sm font-bold text-[#565d6b] md:flex"><a href="#tests" className="hover:text-[#252b49]">全部测试</a><a href="#ideas" className="hover:text-[#252b49]">一起出题</a><a href="#about" className="hover:text-[#252b49]">关于这里</a></div>
-          <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">已收录 03 项</span>
+          <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">已收录 04 项</span>
         </header>
 
         <section id="top" className="grid items-end gap-9 pb-10 pt-16 lg:grid-cols-[1.08fr_.92fr] lg:pb-16 lg:pt-24">
@@ -184,7 +196,7 @@ export default function Home() {
             <div className="rounded-[1.45rem] bg-[#252b49] p-5 text-[#f9f0d9]">
               <div className="flex items-center justify-between"><span className="rounded-full bg-[#f4ce67] px-3 py-1 text-[11px] font-black tracking-[0.1em] text-[#4a3b21]">中心档案</span><span className="text-xs font-bold text-[#aeb5c9]">ISSUE 01</span></div>
               <p className="mt-12 font-serif text-3xl font-black leading-none">把好奇心<br />当作一项技能。</p>
-              <div className="mt-10 grid grid-cols-2 border-t border-white/15 pt-4 text-xs"><div><p className="font-bold text-[#aeb5c9]">当前收录</p><p className="mt-1 text-xl font-black text-[#f4ce67]">03</p></div><div className="border-l border-white/15 pl-4"><p className="font-bold text-[#aeb5c9]">正在筹备</p><p className="mt-1 text-xl font-black text-[#f4ce67]">02</p></div></div>
+              <div className="mt-10 grid grid-cols-2 border-t border-white/15 pt-4 text-xs"><div><p className="font-bold text-[#aeb5c9]">当前收录</p><p className="mt-1 text-xl font-black text-[#f4ce67]">04</p></div><div className="border-l border-white/15 pl-4"><p className="font-bold text-[#aeb5c9]">正在筹备</p><p className="mt-1 text-xl font-black text-[#f4ce67]">02</p></div></div>
             </div>
             <div className="absolute -bottom-5 -left-5 grid size-16 -rotate-12 place-items-center rounded-full border-[5px] border-[#fffdf7] bg-[#d85f48] text-center text-[10px] font-black leading-3 text-white shadow-md">冷门<br />专用</div>
           </aside>
@@ -223,7 +235,7 @@ export default function Home() {
 
         <section id="about" className="mt-14 grid gap-6 rounded-[2rem] bg-[#e9e1cf]/80 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-9"><div><p className="text-xs font-black tracking-[0.16em] text-[#a65843]">ABOUT THIS PLACE</p><h2 className="mt-2 font-serif text-2xl font-black tracking-[-0.04em] text-[#343952] sm:text-3xl">认真出题，测试不太正经。</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#6a6b70]">我们把那些平时不会有人考你的知识和观察力，做成可以随手玩的题。</p></div><span className="inline-flex h-11 items-center justify-center rounded-2xl bg-[#fff9eb] px-4 text-sm font-black text-[#5e6271] shadow-sm">下一项正在发芽 <Leaf className="ml-2 size-4 text-[#6f9b64]" /></span></section>
 
-        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p>第 03 期 · 奥特曼认脸局已上线</p></footer>
+        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p>第 04 期 · 奥特曼听声局已上线</p></footer>
       </div>
     </main>
   );

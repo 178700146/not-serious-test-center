@@ -13,6 +13,9 @@ export const defaultEditableTests: EditableTest[] = [
   { id: 'ultraman-sound', eyebrow: 'NO. 004 · 50 题库｜10 / 20 题可选', title: '奥特曼听声局', description: '听叫声，从四个名字里选出这位光之巨人。', image: 'https://ultraman-sound-quiz.kind-song-3636.chatgpt.site/og.png' },
   { id: 'pokemon', eyebrow: 'NO. 005 · 50 题库｜10 / 20 题可选', title: '宝可梦剪影局', description: '看轮廓，从四个名字里猜出它是谁。', image: 'https://pokemon-silhouette-quiz.kind-song-3636.chatgpt.site/og.png' },
   { id: 'dialect', eyebrow: 'NO. 006 · 50 题库｜10 / 20 题可选', title: '方言捕手', description: '听一段方言，自己写下你猜的省份。', image: 'https://dialect-catcher.kind-song-3636.chatgpt.site/og-dialect.png' },
+  { id: 'insects', eyebrow: 'NO. 007 · 50 题库｜10 / 20 题可选', title: '昆虫侦探', description: '看一眼触角、翅脉和腿，猜出它是谁。', image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/og.png' },
+  { id: 'foreign-country', eyebrow: 'NO. 008 · 50 题库｜10 / 20 题可选', title: '外语猜国家', description: '听一小句陌生话，猜它从哪个国家来。', image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/og.png' },
+  { id: 'bird-calls', eyebrow: 'NO. 009 · 50 题库｜10 / 20 题可选', title: '鸟鸣识别', description: '树叶还没动，你先听出是哪只鸟。', image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/og.png' },
 ];
 
 export function sanitizeEditableTests(value: unknown): EditableTest[] {

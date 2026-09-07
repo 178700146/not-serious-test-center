@@ -13,3 +13,9 @@ export const privateFeedback = sqliteTable('private_feedback', {
   message: text('message').notNull(),
   createdAt: text('created_at').notNull(),
 });
+
+export const siteContent = sqliteTable('site_content', {
+  key: text('key').primaryKey(),
+  value: text('value').notNull(),
+  updatedAt: text('updated_at').notNull(),
+});

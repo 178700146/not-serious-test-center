@@ -1,6 +1,6 @@
 'use client';
 
-import { type FormEvent, useMemo, useState } from 'react';
+import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
   Bird,
@@ -20,8 +20,10 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import type { EditableTest } from '@/lib/content';
 
 type TestCard = {
+  id: string;
   category: '自然界' | '观察力' | '冷知识' | '奇怪技能';
   eyebrow: string;
   title: string;
@@ -36,6 +38,7 @@ type TestCard = {
 
 const tests: TestCard[] = [
   {
+    id: 'mushroom',
     category: '自然界',
     eyebrow: 'NO. 001 · 50 题库｜10 / 20 题可选',
     title: '蘑菇大师',
@@ -48,6 +51,7 @@ const tests: TestCard[] = [
     color: 'mushroom-card',
   },
   {
+    id: 'bird',
     category: '自然界',
     eyebrow: 'NO. 002 · 50 题库｜10 / 20 题可选',
     title: '观鸟大师',
@@ -60,6 +64,7 @@ const tests: TestCard[] = [
     color: 'bird-card',
   },
   {
+    id: 'ultraman-face',
     category: '观察力',
     eyebrow: 'NO. 003 · 50 题库｜10 / 20 题可选',
     title: '奥特曼认脸局',
@@ -72,6 +77,7 @@ const tests: TestCard[] = [
     color: 'tree-card',
   },
   {
+    id: 'ultraman-sound',
     category: '冷知识',
     eyebrow: 'NO. 004 · 50 题库｜10 / 20 题可选',
     title: '奥特曼听声局',
@@ -84,6 +90,7 @@ const tests: TestCard[] = [
     color: 'scent-card',
   },
   {
+    id: 'pokemon',
     category: '观察力',
     eyebrow: 'NO. 005 · 50 题库｜10 / 20 题可选',
     title: '宝可梦剪影局',
@@ -96,6 +103,7 @@ const tests: TestCard[] = [
     color: 'scent-card',
   },
   {
+    id: 'dialect',
     category: '奇怪技能',
     eyebrow: 'NO. 006 · 50 题库｜10 / 20 题可选',
     title: '方言捕手',
@@ -135,15 +143,28 @@ export default function Home() {
   const [query, setQuery] = useState('');
   const [ideaStatus, setIdeaStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [feedbackStatus, setFeedbackStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [testOverrides, setTestOverrides] = useState<Record<string, EditableTest>>({});
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((response) => response.ok ? response.json() as Promise<{ tests?: EditableTest[] }> : Promise.reject(new Error('content failed')))
+      .then((data) => setTestOverrides(Object.fromEntries((data.tests ?? []).map((item) => [item.id, item]))))
+      .catch(() => undefined);
+  }, []);
+
+  const liveTests = useMemo(() => tests.map((test) => {
+    const override = testOverrides[test.id];
+    return override ? { ...test, ...override, imageAlt: test.imageAlt } : test;
+  }), [testOverrides]);
 
   const visibleTests = useMemo(() => {
     const keyword = query.trim().toLowerCase();
-    return tests.filter((test) => {
+    return liveTests.filter((test) => {
       const matchesCategory = category === '全部' || test.category === category;
       const matchesQuery = !keyword || `${test.title}${test.description}${test.category}`.toLowerCase().includes(keyword);
       return matchesCategory && matchesQuery;
     });
-  }, [category, query]);
+  }, [category, liveTests, query]);
 
   async function submitIdea(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -203,7 +224,7 @@ export default function Home() {
             <span className="grid size-10 rotate-[-8deg] place-items-center rounded-[14px] bg-[#242a42] text-[#f9d96f] shadow-[4px_4px_0_#f0ad50] transition-transform group-hover:rotate-0"><CircleHelp className="size-5" strokeWidth={2.6} /></span>
             <span className="leading-none"><span className="block text-lg font-black tracking-tight sm:text-xl">不太正经测试中心</span><span className="mt-1 block text-[10px] font-bold tracking-[0.16em] text-[#767b87]">NOT-SO-SERIOUS LAB</span></span>
           </a>
-          <div className="hidden items-center gap-6 text-sm font-bold text-[#565d6b] md:flex"><a href="#tests" className="hover:text-[#252b49]">全部测试</a><a href="#ideas" className="hover:text-[#252b49]">一起出题</a><a href="#about" className="hover:text-[#252b49]">关于这里</a></div>
+          <div className="hidden items-center gap-6 text-sm font-bold text-[#565d6b] md:flex"><a href="#tests" className="hover:text-[#252b49]">全部测试</a><a href="#ideas" className="hover:text-[#252b49]">一起出题</a><a href="#about" className="hover:text-[#252b49]">关于这里</a><a href="/admin" className="text-[#d85f48] hover:text-[#b84d3a]">站长入口</a></div>
           <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">已收录 06 项</span>
         </header>
 
@@ -259,7 +280,7 @@ export default function Home() {
 
         <section id="about" className="mt-14 grid gap-6 rounded-[2rem] bg-[#e9e1cf]/80 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-9"><div><p className="text-xs font-black tracking-[0.16em] text-[#a65843]">ABOUT THIS PLACE</p><h2 className="mt-2 font-serif text-2xl font-black tracking-[-0.04em] text-[#343952] sm:text-3xl">认真出题，测试不太正经。</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#6a6b70]">我们把那些平时不会有人考你的知识和观察力，做成可以随手玩的题。</p></div><span className="inline-flex h-11 items-center justify-center rounded-2xl bg-[#fff9eb] px-4 text-sm font-black text-[#5e6271] shadow-sm">下一项正在发芽 <Leaf className="ml-2 size-4 text-[#6f9b64]" /></span></section>
 
-        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p>第 06 期 · 方言捕手已上线</p></footer>
+        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p className="flex items-center gap-3"><span>第 06 期 · 方言捕手已上线</span><a href="/admin" className="text-[#d85f48] hover:underline">站长入口</a></p></footer>
       </div>
     </main>
   );

@@ -15,6 +15,13 @@
       "when": 1788326601007,
       "tag": "0001_fast_silver_surfer",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788739200000,
+      "tag": "0002_silly_content",
+      "breakpoints": true
     }
   ]
 }

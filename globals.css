@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius: 0.75rem;
+}
+
+:root {
+  --background: #f7f2e7;
+  --foreground: #1d2431;
+  --primary: #252b49;
+  --primary-foreground: #fff9ea;
+  --border: #d9d5ca;
+  --input: #d9d5ca;
+  --ring: #d85f48;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); font-family: var(--font-geist-sans), Arial, sans-serif; }
+
+.paper-grain { opacity: .3; background-image: radial-gradient(rgba(39,45,72,.16) .55px, transparent .55px); background-size: 7px 7px; mix-blend-mode: multiply; }
+.mushroom-card { background: linear-gradient(135deg, #204436 0%, #b4c98c 100%); }
+.tree-card { background: linear-gradient(135deg, #bdd4a5 0%, #f6e4a8 100%); }
+.bird-card { background: linear-gradient(135deg, #c5daf4 0%, #f3d7cd 100%); }
+.scent-card { background: linear-gradient(135deg, #edc8bc 0%, #e8d8a6 100%); }

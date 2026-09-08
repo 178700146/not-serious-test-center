@@ -1,0 +1,45 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "1f7af648-8b54-4fd3-9b91-5a0f01b607d7",
+  "prevId": "98cfc02b-6672-435f-a0c8-aaaa01d295fb",
+  "tables": {
+    "site_content": {
+      "name": "site_content",
+      "columns": {
+        "key": { "name": "key", "type": "text", "primaryKey": true, "notNull": true, "autoincrement": false },
+        "value": { "name": "value", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false },
+        "updated_at": { "name": "updated_at", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "private_feedback": {
+      "name": "private_feedback",
+      "columns": {
+        "id": { "name": "id", "type": "integer", "primaryKey": true, "notNull": true, "autoincrement": true },
+        "message": { "name": "message", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false },
+        "created_at": { "name": "created_at", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false }
+      },
+      "indexes": {}, "foreignKeys": {}, "compositePrimaryKeys": {}, "uniqueConstraints": {}, "checkConstraints": {}
+    },
+    "test_suggestions": {
+      "name": "test_suggestions",
+      "columns": {
+        "id": { "name": "id", "type": "integer", "primaryKey": true, "notNull": true, "autoincrement": true },
+        "idea": { "name": "idea", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false },
+        "target": { "name": "target", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false },
+        "note": { "name": "note", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false, "default": "''" },
+        "created_at": { "name": "created_at", "type": "text", "primaryKey": false, "notNull": true, "autoincrement": false }
+      },
+      "indexes": {}, "foreignKeys": {}, "compositePrimaryKeys": {}, "uniqueConstraints": {}, "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": { "schemas": {}, "tables": {}, "columns": {} },
+  "internal": { "indexes": {} }
+}

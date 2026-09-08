@@ -1,5 +1,8 @@
 import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
+import tailwindcssVite from '@tailwindcss/vite';
+import { nitro } from 'nitro/vite';
+import { resolve } from 'node:path';
 import vinext from 'vinext';
 import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
@@ -11,6 +14,7 @@ const { d1, r2 } = hostingConfig;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
+const isVercel = process.env.VERCEL === '1' || process.env.VERCEL === 'true';
 
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
@@ -42,20 +46,38 @@ export default defineConfig(async () => {
   process.env.MINIFLARE_REGISTRY_PATH ??= '.wrangler/registry';
 
   // Wrangler snapshots its log path while the Cloudflare plugin is imported.
-  const { cloudflare } = await import('@cloudflare/vite-plugin');
+  // Vercel uses Nitro instead; loading the Cloudflare plugin there would make
+  // Vercel emit a Workers bundle that it cannot serve as a Vercel deployment.
+  const cloudflare = isVercel
+    ? null
+    : (await import('@cloudflare/vite-plugin')).cloudflare;
 
   return {
-    css: { postcss: { plugins: [tailwindcss()] } },
+    // The Cloudflare build uses Tailwind's PostCSS adapter. Nitro's Vercel
+    // build uses the official Vite adapter so CSS imports are handled before
+    // Nitro's multi-environment build starts.
+    css: isVercel ? undefined : { postcss: { plugins: [tailwindcss()] } },
+    // The application normally receives this virtual module from Cloudflare.
+    // Vercel has no `cloudflare:workers` module, so use a tiny env shim that
+    // leaves the optional D1-backed features disabled while keeping the quiz
+    // and its SSR entry deployable.
+    resolve: isVercel
+      ? { alias: { 'cloudflare:workers': resolve(process.cwd(), 'lib/vercel-env.ts') } }
+      : undefined,
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
     plugins: [
       vinext(),
       sites(),
-      cloudflare({
-        viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
-        config: localBindingConfig,
-      }),
+      ...(isVercel
+        ? [tailwindcssVite(), nitro()]
+        : [
+            cloudflare!({
+              viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
+              config: localBindingConfig,
+            }),
+          ]),
     ],
   };
 });

@@ -67,9 +67,22 @@ const tests: TestCard[] = [
     color: 'bird-card',
   },
   {
+    id: 'bird-calls',
+    category: '自然界',
+    eyebrow: 'NO. 003 · 50 题库｜10 / 20 题可选',
+    title: '鸟鸣识别',
+    description: '树叶还没动，你先听出是哪只鸟。',
+    state: 'available',
+    href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/bird-calls',
+    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/bird-call-cover.png',
+    imageAlt: '鸟鸣识别测试封面',
+    icon: Headphones,
+    color: 'bird-card',
+  },
+  {
     id: 'ultraman-face',
     category: '观察力',
-    eyebrow: 'NO. 003 · 50 题库｜10 / 20 题可选',
+    eyebrow: 'NO. 004 · 50 题库｜10 / 20 题可选',
     title: '奥特曼认脸局',
     description: '看形象，叫出这位光之巨人的名字。',
     state: 'available',
@@ -82,7 +95,7 @@ const tests: TestCard[] = [
   {
     id: 'ultraman-sound',
     category: '冷知识',
-    eyebrow: 'NO. 004 · 50 题库｜10 / 20 题可选',
+    eyebrow: 'NO. 005 · 50 题库｜10 / 20 题可选',
     title: '奥特曼听声局',
     description: '听叫声，从四个名字里选出这位光之巨人。',
     state: 'available',
@@ -95,7 +108,7 @@ const tests: TestCard[] = [
   {
     id: 'pokemon',
     category: '观察力',
-    eyebrow: 'NO. 005 · 50 题库｜10 / 20 题可选',
+    eyebrow: 'NO. 006 · 50 题库｜10 / 20 题可选',
     title: '宝可梦剪影局',
     description: '看轮廓，从四个名字里猜出它是谁。',
     state: 'available',
@@ -108,7 +121,7 @@ const tests: TestCard[] = [
   {
     id: 'dialect',
     category: '奇怪技能',
-    eyebrow: 'NO. 006 · 50 题库｜10 / 20 题可选',
+    eyebrow: 'NO. 007 · 50 题库｜10 / 20 题可选',
     title: '方言捕手',
     description: '听一段方言，自己写下你猜的省份。',
     state: 'available',
@@ -119,19 +132,6 @@ const tests: TestCard[] = [
     color: 'scent-card',
   },
   {
-    id: 'insects',
-    category: '自然界',
-    eyebrow: 'NO. 007 · 50 题库｜10 / 20 题可选',
-    title: '昆虫侦探',
-    description: '看一眼触角、翅脉和腿，猜出它是谁。',
-    state: 'available',
-    href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/insects',
-    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/og.png',
-    imageAlt: '昆虫侦探测试封面',
-    icon: Bug,
-    color: 'tree-card',
-  },
-  {
     id: 'foreign-country',
     category: '奇怪技能',
     eyebrow: 'NO. 008 · 50 题库｜10 / 20 题可选',
@@ -139,23 +139,23 @@ const tests: TestCard[] = [
     description: '听一小句陌生话，猜它从哪个国家来。',
     state: 'available',
     href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/foreign-country',
-    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/og.png',
+    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/foreign-cover.png',
     imageAlt: '外语猜国家测试封面',
     icon: Globe2,
     color: 'scent-card',
   },
   {
-    id: 'bird-calls',
+    id: 'insects',
     category: '自然界',
     eyebrow: 'NO. 009 · 50 题库｜10 / 20 题可选',
-    title: '鸟鸣识别',
-    description: '树叶还没动，你先听出是哪只鸟。',
+    title: '昆虫侦探',
+    description: '看一眼触角、翅脉和腿，猜出它是谁。',
     state: 'available',
-    href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/bird-calls',
-    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/og.png',
-    imageAlt: '鸟鸣识别测试封面',
-    icon: Headphones,
-    color: 'bird-card',
+    href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/insects',
+    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/insect-cover.png',
+    imageAlt: '昆虫侦探测试封面',
+    icon: Bug,
+    color: 'tree-card',
   },
   {
     category: '观察力',
@@ -295,7 +295,7 @@ export default function Home() {
 
           {visibleTests.length > 0 ? <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{visibleTests.map((test) => {
             const Icon = test.icon;
-            const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt={test.imageAlt ?? `${test.title}测试封面`} className="size-full object-cover transition duration-500 group-hover:scale-105" /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
+            const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt={test.imageAlt ?? `${test.title}测试封面`} className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : ''}`} /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
             return test.href ? <a key={test.title} href={test.href} className="group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]">{body}</a> : <article key={test.title} className="rounded-[1.65rem] border border-dashed border-[#c9cbd0] bg-[#fffdf8]/52 p-3">{body}</article>;
           })}</div> : <div className="mt-7 rounded-[1.65rem] border border-dashed border-[#c5c8cf] bg-[#fffdf8]/65 px-6 py-12 text-center"><CircleHelp className="mx-auto size-8 text-[#d85f48]" /><p className="mt-4 font-black text-[#303752]">这项奇怪技能还没被收录。</p><button type="button" onClick={() => { setQuery(''); setCategory('全部'); }} className="mt-3 text-sm font-bold text-[#d85f48] hover:underline">回到全部测试</button></div>}
         </section>

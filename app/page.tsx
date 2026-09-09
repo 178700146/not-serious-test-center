@@ -35,7 +35,6 @@ type TestCard = {
   href?: string;
   image?: string;
   imageAlt?: string;
-  showCoverTitle?: boolean;
   icon: typeof Leaf;
   color: string;
 };
@@ -75,9 +74,8 @@ const tests: TestCard[] = [
     description: '树叶还没动，你先听出是哪只鸟。',
     state: 'available',
     href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/bird-calls',
-    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/bird-call-cover.png',
+    image: '/covers/bird-call.svg',
     imageAlt: '鸟鸣识别测试封面',
-    showCoverTitle: true,
     icon: Headphones,
     color: 'bird-card',
   },
@@ -141,9 +139,8 @@ const tests: TestCard[] = [
     description: '听一小句陌生话，猜它从哪个国家来。',
     state: 'available',
     href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/foreign-country',
-    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/foreign-cover.png',
+    image: '/covers/foreign-country.svg',
     imageAlt: '外语猜国家测试封面',
-    showCoverTitle: true,
     icon: Globe2,
     color: 'scent-card',
   },
@@ -155,9 +152,8 @@ const tests: TestCard[] = [
     description: '看一眼触角、翅脉和腿，猜出它是谁。',
     state: 'available',
     href: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/insects',
-    image: 'https://strange-skill-quiz.kind-song-3636.chatgpt.site/insect-cover.png',
+    image: '/covers/insect.svg',
     imageAlt: '昆虫侦探测试封面',
-    showCoverTitle: true,
     icon: Bug,
     color: 'tree-card',
   },
@@ -299,7 +295,7 @@ export default function Home() {
 
           {visibleTests.length > 0 ? <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{visibleTests.map((test) => {
             const Icon = test.icon;
-            const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt={test.imageAlt ?? `${test.title}测试封面`} className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : ''}`} /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}{test.showCoverTitle && <span className="absolute bottom-3 left-3 rounded-xl border border-white/20 bg-[#252b49]/90 px-3.5 py-2 text-base font-black tracking-tight text-[#fff9ea] shadow-[3px_3px_0_rgba(240,173,80,.65)] backdrop-blur-sm">{test.title}</span>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
+            const body = <><div className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}>{test.image ? <img src={test.image} alt={test.imageAlt ?? `${test.title}测试封面`} className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : ''}`} /> : <div className="absolute inset-0 grid place-items-center"><Icon className="size-14 text-[#273049]/75" strokeWidth={1.45} /></div>}<span className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}>{test.state === 'available' ? '现在可测' : '筹备中'}</span></div><div className="px-1 pb-1 pt-5"><p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">{test.eyebrow}</p><h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">{test.title}</h3><p className="mt-2 min-h-11 text-sm leading-5 text-[#737986]">{test.description}</p><div className="mt-5 flex items-center justify-between text-xs font-bold"><span className="rounded-full bg-[#f3eee2] px-2.5 py-1.5 text-[#666c78]">{test.category}</span>{test.state === 'available' && <span className="inline-flex items-center gap-1 text-[#303855]">去试试 <ArrowUpRight className="size-3.5" /></span>}</div></div></>;
             return test.href ? <a key={test.title} href={test.href} className="group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]">{body}</a> : <article key={test.title} className="rounded-[1.65rem] border border-dashed border-[#c9cbd0] bg-[#fffdf8]/52 p-3">{body}</article>;
           })}</div> : <div className="mt-7 rounded-[1.65rem] border border-dashed border-[#c5c8cf] bg-[#fffdf8]/65 px-6 py-12 text-center"><CircleHelp className="mx-auto size-8 text-[#d85f48]" /><p className="mt-4 font-black text-[#303752]">这项奇怪技能还没被收录。</p><button type="button" onClick={() => { setQuery(''); setCategory('全部'); }} className="mt-3 text-sm font-bold text-[#d85f48] hover:underline">回到全部测试</button></div>}
         </section>

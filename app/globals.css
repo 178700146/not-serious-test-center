@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-geist-sans);
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+  --font-heading: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-border: var(--border);
@@ -30,10 +30,14 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--background); font-family: var(--font-geist-sans), Arial, sans-serif; }
+body { margin: 0; background: var(--background); font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; }
 
 .paper-grain { opacity: .3; background-image: radial-gradient(rgba(39,45,72,.16) .55px, transparent .55px); background-size: 7px 7px; mix-blend-mode: multiply; }
 .mushroom-card { background: linear-gradient(135deg, #204436 0%, #b4c98c 100%); }
 .tree-card { background: linear-gradient(135deg, #bdd4a5 0%, #f6e4a8 100%); }
 .bird-card { background: linear-gradient(135deg, #c5daf4 0%, #f3d7cd 100%); }
 .scent-card { background: linear-gradient(135deg, #edc8bc 0%, #e8d8a6 100%); }
+.forest-glow { background: radial-gradient(circle at 50% -10%, rgba(222, 238, 203, 0.95), transparent 60%); }
+.spore-field { background-image: radial-gradient(circle, rgba(63, 94, 70, 0.18) 1px, transparent 1.4px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black, transparent 55%); }
+.sky-wash { background: radial-gradient(circle at 76% -2%, rgba(247, 223, 156, 0.8) 0%, rgba(234, 241, 225, 0.35) 28%, transparent 60%); }
+.feather-field { background-image: radial-gradient(rgba(42, 91, 96, 0.15) 0.6px, transparent 0.6px); background-size: 9px 9px; mask-image: linear-gradient(to bottom, black, transparent 62%); }

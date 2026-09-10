@@ -1,16 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: '不太正经测试中心',
@@ -18,9 +7,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: '不太正经测试中心',
     description: '这里专门测试那些奇奇怪怪的本事。',
-    url: 'https://not-serious-test-center.kind-song-3636.chatgpt.site',
+    url: 'https://notatest.cn',
     siteName: '不太正经测试中心',
-    images: ['https://not-serious-test-center.kind-song-3636.chatgpt.site/og.png'],
+    images: ['https://notatest.cn/og.png'],
     locale: 'zh_CN',
     type: 'website',
   },
@@ -28,7 +17,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '不太正经测试中心',
     description: '这里专门测试那些奇奇怪怪的本事。',
-    images: ['https://not-serious-test-center.kind-song-3636.chatgpt.site/og.png'],
+    images: ['https://notatest.cn/og.png'],
   },
 };
 
@@ -39,11 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

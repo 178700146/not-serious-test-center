@@ -140,6 +140,7 @@ export default function Home() {
           <div className="relative grid min-h-60 place-items-center overflow-hidden rounded-[1.4rem] border border-white/10 bg-[radial-gradient(circle_at_center,#193563_0%,#0d1d3c_55%,#071632_100%)] px-6 text-center">
             <div aria-hidden="true" className="absolute inset-x-0 bottom-7 flex items-end justify-center gap-1 opacity-70">{[18, 34, 22, 49, 28, 65, 35, 44, 21, 57, 30, 46, 25, 38, 19].map((height, itemIndex) => <span key={itemIndex} className="w-1 rounded-full bg-[#ffe185] shadow-[0_0_10px_#d54545]" style={{ height }} />)}</div>
             <div className="relative"><span className="mx-auto grid size-16 place-items-center rounded-3xl bg-[#d54545] text-[#ffe185] shadow-[0_0_28px_rgba(213,69,69,.34)]"><Headphones className="size-8" /></span><p className="mt-5 text-lg font-black">这一声，来自谁？</p><Button type="button" onClick={() => setPlayNonce((value) => value + 1)} className="mt-5 h-12 rounded-2xl bg-[#d54545] px-5 font-black text-white shadow-[0_6px_20px_rgba(213,69,69,.25)] hover:bg-[#bd3535]"><Volume2 className="size-5" />{playNonce ? '再听一次' : '播放声音'}</Button></div>
+            <p className="relative mt-4 max-w-sm text-xs font-semibold leading-5 text-[#b8c6df]">若点击后仍没有声音，请检查浏览器是否拦截播放；当前音轨来自公开视频，部分网络环境可能无法访问。</p>
           </div>
         </div>
 

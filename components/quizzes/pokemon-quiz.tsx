@@ -83,6 +83,7 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
+  const [imageFailed, setImageFailed] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const current = round[index] ?? pokemon[0];
   const options = useMemo(() => {
@@ -98,6 +99,7 @@ export default function Home() {
   useEffect(() => {
     if (!started) return;
     setImageLoading(true);
+    setImageFailed(false);
     let checks = 0;
     const readyTimer = window.setInterval(() => {
       const image = imageRef.current;
@@ -217,17 +219,15 @@ export default function Home() {
                   alt={current.name}
                   loading="eager"
                   decoding="async"
-                  className={`relative z-10 h-[88%] max-w-[78%] object-contain drop-shadow-[0_18px_20px_rgba(0,0,0,.5)] transition duration-300 ${answer ? '' : 'brightness-0 saturate-0 contrast-200'}`}
-                  onLoad={() => setImageLoading(false)}
-                  onError={(event) => {
+                  className={`relative z-10 h-[88%] max-w-[78%] object-contain drop-shadow-[0_18px_20px_rgba(0,0,0,.5)] transition duration-300 ${answer ? '' : 'brightness-0 saturate-0 contrast-200'} ${imageFailed ? 'hidden' : ''}`}
+                  onLoad={() => { setImageLoading(false); setImageFailed(false); }}
+                  onError={() => {
                     setImageLoading(false);
-                    event.currentTarget.style.display = 'none';
-                    const fallback = event.currentTarget.nextElementSibling;
-                    if (fallback instanceof HTMLElement) fallback.style.display = 'grid';
+                    setImageFailed(true);
                   }}
                 />
-                {imageLoading && <div className="absolute inset-0 z-20 grid place-items-center bg-[#0b1b38]/80 p-8 text-center"><div><span className="mx-auto grid size-10 place-items-center rounded-2xl border-2 border-[#ffe185]/30 border-t-[#ffe185] animate-spin" /><p className="mt-3 text-sm font-bold text-[#c4d2e8]">正在加载官方图鉴…</p></div></div>}
-                <div className="absolute inset-0 z-20 hidden place-items-center bg-[#0b1b38] p-8 text-center" aria-live="polite"><div><p className="text-3xl font-black text-[#ffe185]">{current.name}</p><p className="mt-2 text-sm text-[#b8c6df]">官方图像暂时加载失败，请稍后重试</p></div></div>
+                {imageLoading && !imageFailed && <div className="absolute inset-0 z-20 grid place-items-center bg-[#0b1b38]/80 p-8 text-center"><div><span className="mx-auto grid size-10 place-items-center rounded-2xl border-2 border-[#ffe185]/30 border-t-[#ffe185] animate-spin" /><p className="mt-3 text-sm font-bold text-[#c4d2e8]">正在加载官方图鉴…</p></div></div>}
+                {imageFailed && <div className="absolute inset-0 z-20 grid place-items-center bg-[#0b1b38] p-8 text-center" aria-live="polite"><div><p className="text-3xl font-black text-[#ffe185]">{current.name}</p><p className="mt-2 text-sm text-[#b8c6df]">官方图像暂时加载失败，这题会显示答案提示。</p></div></div>}
                 {!answer && !imageLoading && <span className="absolute bottom-4 z-10 rounded-full bg-[#071632]/80 px-3 py-1 text-[10px] font-black tracking-[.14em] text-[#ffe185]">WHO&apos;S THAT?</span>}
               </div>
             </section>

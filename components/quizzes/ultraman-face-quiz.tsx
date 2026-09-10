@@ -182,6 +182,7 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
+  const [imageFailed, setImageFailed] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const hero = round[index] ?? heroes[0];
   const options = useMemo(() => {
@@ -197,6 +198,7 @@ export default function Home() {
   useEffect(() => {
     if (!started) return;
     setImageLoading(true);
+    setImageFailed(false);
     let checks = 0;
     const readyTimer = window.setInterval(() => {
       const currentImage = imageRef.current;
@@ -283,19 +285,17 @@ export default function Home() {
                   alt={hero.name}
                   loading="eager"
                   decoding="async"
-                  className="size-full object-contain p-4 transition-transform duration-500 hover:scale-[1.03] sm:p-7"
-                  onLoad={() => setImageLoading(false)}
-                  onError={(event) => {
+                  className={`size-full object-contain p-4 transition-transform duration-500 hover:scale-[1.03] sm:p-7 ${imageFailed ? 'hidden' : ''}`}
+                  onLoad={() => { setImageLoading(false); setImageFailed(false); }}
+                  onError={() => {
                     setImageLoading(false);
-                    event.currentTarget.style.display = 'none';
-                    const fallback = event.currentTarget.nextElementSibling;
-                    if (fallback instanceof HTMLElement) fallback.style.display = 'grid';
+                    setImageFailed(true);
                   }}
                 />
-                {imageLoading && <div className="absolute inset-0 grid place-items-center bg-[#0b1b38]/80 p-8 text-center"><div><span className="mx-auto grid size-10 place-items-center rounded-2xl border-2 border-[#ffe185]/30 border-t-[#ffe185] text-[#ffe185] animate-spin" /><p className="mt-3 text-sm font-bold text-[#c4d2e8]">正在加载官方图片…</p></div></div>}
-                <div className="absolute inset-0 hidden place-items-center bg-[#0b1b38] p-8 text-center" aria-live="polite">
+                {imageLoading && !imageFailed && <div className="absolute inset-0 grid place-items-center bg-[#0b1b38]/80 p-8 text-center"><div><span className="mx-auto grid size-10 place-items-center rounded-2xl border-2 border-[#ffe185]/30 border-t-[#ffe185] text-[#ffe185] animate-spin" /><p className="mt-3 text-sm font-bold text-[#c4d2e8]">正在加载官方图片…</p></div></div>}
+                {imageFailed && <div className="absolute inset-0 grid place-items-center bg-[#0b1b38] p-8 text-center" aria-live="polite">
                   <div><p className="text-3xl font-black text-[#ffe185]">{hero.name}</p><p className="mt-2 text-sm text-[#b8c6df]">官方图片暂时加载失败，请稍后重试</p></div>
-                </div>
+                </div>}
               </div>
             </div>
 

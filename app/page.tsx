@@ -324,7 +324,7 @@ export default function Home() {
 
         <section id="about" className="mt-14 grid gap-6 rounded-[2rem] bg-[#e9e1cf]/80 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-9"><div><p className="text-xs font-black tracking-[0.16em] text-[#a65843]">ABOUT THIS PLACE</p><h2 className="mt-2 font-serif text-2xl font-black tracking-[-0.04em] text-[#343952] sm:text-3xl">认真出题，测试不太正经。</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#6a6b70]">我们把那些平时不会有人考你的知识和观察力，做成可以随手玩的题。</p></div><span className="inline-flex h-11 items-center justify-center rounded-2xl bg-[#fff9eb] px-4 text-sm font-black text-[#5e6271] shadow-sm">下一项正在发芽 <Leaf className="ml-2 size-4 text-[#6f9b64]" /></span></section>
 
-        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p className="flex items-center gap-3"><span>第 09 期 · 三项新测试已上线</span><a href="/admin" className="text-[#d85f48] hover:underline">站长入口</a></p></footer>
+        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between"><p>不太正经测试中心 · 为好奇心保留一张座位</p><p className="flex items-center gap-3"><span>第 09 期 · 三项新测试已上线</span><a href="/credits" className="hover:underline">素材署名</a><a href="/admin" className="text-[#d85f48] hover:underline">站长入口</a></p></footer>
       </div>
     </main>
   );

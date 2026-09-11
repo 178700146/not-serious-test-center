@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: '这里专门测试那些奇奇怪怪的本事。',
     url: 'https://notatest.cn',
     siteName: '不太正经测试中心',
-    images: ['https://notatest.cn/og.png'],
+    images: ['https://notatest.cn/og.webp'],
     locale: 'zh_CN',
     type: 'website',
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '不太正经测试中心',
     description: '这里专门测试那些奇奇怪怪的本事。',
-    images: ['https://notatest.cn/og.png'],
+    images: ['https://notatest.cn/og.webp'],
   },
 };
 

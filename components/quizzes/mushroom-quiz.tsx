@@ -43,7 +43,7 @@ const questions: Question[] = [
   { name: '美味牛肝菌', scientificName: 'Boletus edulis', poisonous: false },
   { name: '灰树花', scientificName: 'Grifola frondosa', poisonous: false },
   { name: '野生金针菇', scientificName: 'Flammulina velutipes', poisonous: false },
-  { name: '灵芝', scientificName: 'Ganoderma lingzhi', imageSearchNames: ['Ganoderma lingzhi', 'Ganoderma lucidum'], localImage: '/media/mushrooms/ganoderma-lingzhi.png', poisonous: false },
+  { name: '灵芝', scientificName: 'Ganoderma lingzhi', imageSearchNames: ['Ganoderma lingzhi', 'Ganoderma lucidum'], localImage: '/media/mushrooms/ganoderma-lingzhi.webp', poisonous: false },
   { name: '毒粉褶菌', scientificName: 'Entoloma sinuatum', poisonous: true },
   { name: '鹿花菌', scientificName: 'Gyromitra esculenta', poisonous: true },
   { name: '发光侧耳', scientificName: 'Omphalotus olearius', poisonous: true },

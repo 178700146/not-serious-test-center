@@ -13,6 +13,7 @@
 
 | 测试 | 文件 | 许可证 | 来源页 |
 | --- | --- | --- | --- |
+| 蘑菇大师 | `public/media/mushrooms/ganoderma-lingzhi.png` | 原创生成素材（OpenAI 图像生成） | 无第三方素材页；生成提示和日期见 Git 历史 |
 | 方言捕手 | `public/audio/dialect/beijing.ogg` | CC BY-SA 3.0 | [北京样音](https://commons.wikimedia.org/wiki/File:Zh-dialect_Beijing_sample.ogg) |
 | 方言捕手 | `public/audio/dialect/tianjin.oga` | CC0 | [天津样音](https://commons.wikimedia.org/wiki/File:Zh,_cmn,_jlua,_Tianjin_dialect_(Hexi),_维基百科,_自由的百科全书.oga) |
 | 方言捕手 | `public/audio/dialect/hebei.oga` | CC0 | [邯郸样音](https://commons.wikimedia.org/wiki/File:Zh,_cmn,_jlua,_Handan_Dialect,_维基百科,_自由的百科全书.oga) |

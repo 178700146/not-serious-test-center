@@ -414,7 +414,7 @@ export default function Home() {
               <a href="#tests">
                 <Button
                   size="lg"
-                  className="h-12 rounded-2xl bg-[#252b49] px-5 font-bold text-[#fff9ea] shadow-[4px_4px_0_#f0ad50] hover:bg-[#373f64]"
+                  className="h-12 rounded-2xl bg-[#252b49] px-5 font-bold text-[#fff9ea] shadow-[4px_4px_0_#f0ad50] transition-transform active:translate-y-px hover:bg-[#373f64]"
                 >
                   开始乱逛 <ChevronRight className="size-4" />
                 </Button>
@@ -423,7 +423,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="h-12 rounded-2xl border-[#cdd1d5] bg-[#fffdf8]/75 px-5 font-bold text-[#3f4657] hover:bg-white"
+                  className="h-12 rounded-2xl border-[#cdd1d5] bg-[#fffdf8]/75 px-5 font-bold text-[#3f4657] transition-transform active:translate-y-px hover:bg-white"
                 >
                   先测蘑菇 <ArrowUpRight className="size-4" />
                 </Button>
@@ -544,6 +544,9 @@ export default function Home() {
                             alt={test.imageAlt ?? `${test.title}测试封面`}
                             loading="lazy"
                             decoding="async"
+                            onError={(event) => {
+                              event.currentTarget.style.display = 'none';
+                            }}
                             className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
                           />
                           <div
@@ -728,7 +731,7 @@ export default function Home() {
                   type="submit"
                   size="lg"
                   disabled={ideaStatus === 'submitting'}
-                  className="h-11 rounded-2xl bg-[#d85f48] px-5 font-black text-white shadow-[3px_3px_0_#f0ad50] hover:bg-[#c5513d]"
+                  className="h-11 rounded-2xl bg-[#d85f48] px-5 font-black text-white shadow-[3px_3px_0_#f0ad50] transition-transform active:translate-y-px hover:bg-[#c5513d]"
                 >
                   {ideaStatus === 'submitting' ? '正在投递…' : '把点子投进去'}{' '}
                   <Send className="size-4" />
@@ -793,7 +796,7 @@ export default function Home() {
                 type="submit"
                 size="lg"
                 disabled={feedbackStatus === 'submitting'}
-                className="h-11 rounded-2xl bg-[#252b49] px-5 font-black text-[#fff9ea] shadow-[3px_3px_0_#d4bd85] hover:bg-[#373f64]"
+                className="h-11 rounded-2xl bg-[#252b49] px-5 font-black text-[#fff9ea] shadow-[3px_3px_0_#d4bd85] transition-transform active:translate-y-px hover:bg-[#373f64]"
               >
                 {feedbackStatus === 'submitting' ? '正在发送…' : '只发给站长'}{' '}
                 <Send className="size-4" />
@@ -832,14 +835,14 @@ export default function Home() {
           </span>
         </section>
 
-        <footer className="flex flex-col gap-2 py-9 text-xs font-semibold text-[#888a8f] sm:flex-row sm:items-center sm:justify-between">
+        <footer className="flex flex-col gap-3 border-t border-[#2b334d]/10 py-6 text-xs font-semibold leading-5 text-[#888a8f] sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:py-9">
           <p>不太正经测试中心 · 为好奇心保留一张座位</p>
-          <p className="flex items-center gap-3">
+          <p className="flex flex-wrap items-center gap-2 sm:gap-3">
             <span>第 10 期 · 反应测试已上线</span>
-            <a href="/credits" className="hover:underline">
+            <a href="/credits" className="rounded-full px-2 py-1 transition hover:bg-[#fff9eb] hover:underline">
               素材署名
             </a>
-            <a href="/admin" className="text-[#d85f48] hover:underline">
+            <a href="/admin" className="rounded-full px-2 py-1 text-[#d85f48] transition hover:bg-[#fff9eb] hover:underline">
               站长入口
             </a>
           </p>

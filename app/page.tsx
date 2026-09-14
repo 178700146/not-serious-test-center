@@ -487,7 +487,7 @@ export default function Home() {
 
           {visibleTests.length > 0 ? (
             <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {visibleTests.map((test) => {
+              {visibleTests.map((test, index) => {
                 const Icon = test.icon;
                 const body = (
                   <>
@@ -552,14 +552,16 @@ export default function Home() {
                   <a
                     key={test.title}
                     href={test.href}
-                    className="group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]"
+                    style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
+                    className="shelf-reveal group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]"
                   >
                     {body}
                   </a>
                 ) : (
                   <article
                     key={test.title}
-                    className="rounded-[1.65rem] border border-dashed border-[#c9cbd0] bg-[#fffdf8]/52 p-3"
+                    style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
+                    className="shelf-reveal rounded-[1.65rem] border border-dashed border-[#c9cbd0] bg-[#fffdf8]/52 p-3"
                   >
                     {body}
                   </article>

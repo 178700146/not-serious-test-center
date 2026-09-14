@@ -41,3 +41,14 @@ body { margin: 0; background: var(--background); font-family: "PingFang SC", "Mi
 .spore-field { background-image: radial-gradient(circle, rgba(63, 94, 70, 0.18) 1px, transparent 1.4px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black, transparent 55%); }
 .sky-wash { background: radial-gradient(circle at 76% -2%, rgba(247, 223, 156, 0.8) 0%, rgba(234, 241, 225, 0.35) 28%, transparent 60%); }
 .feather-field { background-image: radial-gradient(rgba(42, 91, 96, 0.15) 0.6px, transparent 0.6px); background-size: 9px 9px; mask-image: linear-gradient(to bottom, black, transparent 62%); }
+
+@keyframes shelf-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.shelf-reveal { animation: shelf-reveal 520ms cubic-bezier(.22, .8, .35, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-reveal { animation: none; }
+}

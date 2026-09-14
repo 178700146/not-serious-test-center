@@ -3,6 +3,7 @@
 import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
+  ArrowUp,
   Bird,
   Bug,
   Check,
@@ -207,6 +208,7 @@ export default function Home() {
   const [feedbackStatus, setFeedbackStatus] = useState<
     'idle' | 'submitting' | 'success' | 'error'
   >('idle');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [testOverrides, setTestOverrides] = useState<
     Record<string, EditableTest>
   >({});
@@ -224,6 +226,13 @@ export default function Home() {
         ),
       )
       .catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 640);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const liveTests = useMemo(
@@ -823,6 +832,15 @@ export default function Home() {
           </p>
         </footer>
       </div>
+      {showBackToTop && (
+        <a
+          href="#top"
+          aria-label="回到顶部"
+          className="fixed bottom-5 right-5 z-20 grid size-11 place-items-center rounded-full border border-[#2b334d]/15 bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50] transition hover:-translate-y-1 hover:bg-[#373f64] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/60"
+        >
+          <ArrowUp className="size-4" />
+        </a>
+      )}
     </main>
   );
 }

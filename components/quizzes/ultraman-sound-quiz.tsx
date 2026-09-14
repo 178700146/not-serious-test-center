@@ -5,6 +5,7 @@ import { ArrowRight, Headphones, RotateCcw, Sparkles, Volume2, Zap } from 'lucid
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
+import { QuizResultActions } from '@/components/quiz-result-actions';
 
 type SoundClue = {
   name: string;
@@ -145,7 +146,7 @@ export default function Home() {
         </div>
 
         {finished ? (
-          <section className="mt-6 rounded-[2rem] border border-white/10 bg-[#163765] p-7 text-center sm:p-9"><p className="text-sm font-black tracking-[.14em] text-[#ffe185]">你的成绩</p><p className="mt-3 text-6xl font-black">{score}<span className="text-2xl text-[#b8c6df]"> / {round.length}</span></p><h2 className="mt-6 text-2xl font-black">{score === round.length ? '你的耳朵，已经是光之国认证。' : score / round.length >= 0.4 ? '这耳朵，确实听过不少光。' : '先别急，再听一轮。'}</h2><Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再听一次</Button></section>
+          <section className="mt-6 rounded-[2rem] border border-white/10 bg-[#163765] p-7 text-center sm:p-9"><p className="text-sm font-black tracking-[.14em] text-[#ffe185]">你的成绩</p><p className="mt-3 text-6xl font-black">{score}<span className="text-2xl text-[#b8c6df]"> / {round.length}</span></p><h2 className="mt-6 text-2xl font-black">{score === round.length ? '你的耳朵，已经是光之国认证。' : score / round.length >= 0.4 ? '这耳朵，确实听过不少光。' : '先别急，再听一轮。'}</h2><Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再听一次</Button><QuizResultActions testId="ultraman-sound" title="奥特曼听声局" score={`${score}/${round.length}`} href="/ultraman-sound" /></section>
         ) : (
           <section className="mt-6"><div className="grid gap-3 sm:grid-cols-2">{options.map((name, optionIndex) => <Button key={name} type="button" onClick={() => choose(name)} variant="outline" className={`h-[62px] justify-start rounded-2xl border-white/15 bg-white/5 px-5 text-left font-black text-white hover:bg-white/10 ${answer && name === clue.name ? 'border-[#61d5ad] bg-[#17423d]' : ''}`}><span className="mr-3 text-xs text-[#ffe185]">{String.fromCharCode(65 + optionIndex)}</span>{name}</Button>)}</div>{answer && <div className={`mt-5 rounded-3xl p-5 ${answer === clue.name ? 'bg-[#17423d]' : 'bg-[#3d2947]'}`}><p className="font-black">{answer === clue.name ? '答对了！' : `答案是：${clue.name}`}</p><p className="mt-2 text-sm text-[#b8c6df]">音源来自圆谷官方公开视频片段。</p><Button type="button" onClick={next} className="mt-4 h-10 rounded-2xl bg-[#d54545] font-black text-white hover:bg-[#bd3535]">下一题 <ArrowRight className="size-4" /></Button></div>}</section>
         )}

@@ -13,6 +13,7 @@ import {
 import Link from 'next/link';
 
 import { Community } from '@/components/community';
+import { QuizResultActions } from '@/components/quiz-result-actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -470,6 +471,7 @@ export default function ReactionSpeedQuiz() {
                     重新选择玩法
                   </Button>
                 </div>
+                <QuizResultActions testId="reaction-speed" title="反应速度局" score={`${total} ms`} detail={MODE_LABELS[mode].title} href="/reaction-speed" />
               </div>
             )}
           </div>

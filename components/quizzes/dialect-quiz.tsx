@@ -6,6 +6,7 @@ import { ArrowRight, Check, CircleHelp, ExternalLink, MapPin, RotateCcw, Sparkle
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Community } from '@/components/community';
+import { QuizResultActions } from '@/components/quiz-result-actions';
 
 type DialectClue = {
   province: string;
@@ -197,7 +198,7 @@ export default function Home() {
         )}
         {answer && <>
           <div className={`mt-5 rounded-3xl p-5 ${correct ? 'bg-[#17423d]' : 'bg-[#3d2947]'}`}><div className="flex items-start gap-3"><span className={`mt-0.5 grid size-7 place-items-center rounded-full ${correct ? 'bg-[#61d5ad] text-[#12362f]' : 'bg-[#d54545] text-white'}`}>{correct ? <Check className="size-4" /> : <X className="size-4" />}</span><div><p className="font-black">{correct ? '猜中了！' : `这次不是${answer}。`}</p><p className="mt-2 text-sm leading-6 text-[#dbe7ff]">答案是 <b className="text-[#ffe185]">{clue.provinceLabel}</b> · {clue.city} · {clue.dialect}</p><p className="mt-1 text-sm leading-6 text-[#b8c6df]">原句：{clue.sentence}</p><p className="mt-1 text-xs text-[#93a7ca]">授权：{clue.license}</p><a href={clue.sourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#ffe185] hover:underline">查看音频来源与授权 <ExternalLink className="size-3.5" /></a></div></div>{!finished && <Button type="button" onClick={next} className="mt-5 h-10 rounded-2xl bg-[#d54545] font-black text-white hover:bg-[#bd3535]">下一题 <ArrowRight className="size-4" /></Button>}</div>
-          {finished && <section className="mt-5 rounded-[2rem] border border-white/10 bg-[#163765] p-7 text-center sm:p-9"><p className="text-sm font-black tracking-[.14em] text-[#ffe185]">你的成绩</p><p className="mt-3 text-6xl font-black">{score}<span className="text-2xl text-[#b8c6df]"> / {round.length}</span></p><h2 className="mt-6 text-2xl font-black">{score === round.length ? '你已经开始听见省份了。' : score / round.length >= 0.7 ? '这耳朵，跑过不少地方。' : score / round.length >= 0.4 ? '省份线索抓到了几条。' : '先别急，方言比想象中更会伪装。'}</h2><Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再猜一次</Button></section>}
+          {finished && <section className="mt-5 rounded-[2rem] border border-white/10 bg-[#163765] p-7 text-center sm:p-9"><p className="text-sm font-black tracking-[.14em] text-[#ffe185]">你的成绩</p><p className="mt-3 text-6xl font-black">{score}<span className="text-2xl text-[#b8c6df]"> / {round.length}</span></p><h2 className="mt-6 text-2xl font-black">{score === round.length ? '你已经开始听见省份了。' : score / round.length >= 0.7 ? '这耳朵，跑过不少地方。' : score / round.length >= 0.4 ? '省份线索抓到了几条。' : '先别急，方言比想象中更会伪装。'}</h2><Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再猜一次</Button><QuizResultActions testId="dialect" title="方言捕手" score={`${score}/${round.length}`} href="/dialect" /></section>}
         </>}
         </>}
         <Community quizName="方言捕手" tone="sky" />

@@ -5,6 +5,7 @@ import { ArrowRight, Check, ExternalLink, RotateCcw, Sparkles, X, Zap } from 'lu
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
+import { QuizResultActions } from '@/components/quiz-result-actions';
 
 type Pokemon = {
   name: string;
@@ -251,7 +252,7 @@ export default function Home() {
             )}
           </>
         ) : started && showResult ? (
-          <section className="rounded-[2rem] border border-white/10 bg-[#163765] p-7 text-center shadow-[0_24px_70px_rgba(0,0,0,.25)] sm:p-9"><p className="text-sm font-black tracking-[.14em] text-[#ffe185]">冷热剪影完成</p><p className="mt-3 text-6xl font-black">{score}<span className="text-2xl text-[#b8c6df]"> / {round.length}</span></p><h2 className="mt-6 text-2xl font-black">{rank.label}</h2><p className="mt-2 text-sm text-[#b8c6df]">{rank.text}</p><Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再猜一轮</Button></section>
+          <section className="rounded-[2rem] border border-white/10 bg-[#163765] p-7 text-center shadow-[0_24px_70px_rgba(0,0,0,.25)] sm:p-9"><p className="text-sm font-black tracking-[.14em] text-[#ffe185]">冷热剪影完成</p><p className="mt-3 text-6xl font-black">{score}<span className="text-2xl text-[#b8c6df]"> / {round.length}</span></p><h2 className="mt-6 text-2xl font-black">{rank.label}</h2><p className="mt-2 text-sm text-[#b8c6df]">{rank.text}</p><Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再猜一轮</Button><QuizResultActions testId="pokemon" title="宝可梦剪影局" score={`${score}/${round.length}`} detail={rank.label} href="/pokemon" /></section>
         ) : null}
         <Community quizName="宝可梦剪影局" tone="sky" />
       </div>

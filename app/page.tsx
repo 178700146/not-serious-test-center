@@ -212,6 +212,7 @@ export default function Home() {
   const [testOverrides, setTestOverrides] = useState<
     Record<string, EditableTest>
   >({});
+  const [dailyTestId, setDailyTestId] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/content')
@@ -226,6 +227,13 @@ export default function Home() {
         ),
       )
       .catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    const available = tests.filter((test) => test.state === 'available');
+    const today = new Date();
+    const dayIndex = Number(`${today.getFullYear()}${String(today.getMonth() + 1).padStart(2, '0')}${String(today.getDate()).padStart(2, '0')}`);
+    setDailyTestId(available[dayIndex % available.length]?.id ?? null);
   }, []);
 
   useEffect(() => {
@@ -258,6 +266,8 @@ export default function Home() {
       return matchesCategory && matchesQuery;
     });
   }, [category, liveTests, query]);
+
+  const dailyTest = liveTests.find((test) => test.id === dailyTestId);
 
   async function submitIdea(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -349,6 +359,9 @@ export default function Home() {
             <a href="#about" className="hover:text-[#252b49]">
               关于这里
             </a>
+            <a href="/history" className="hover:text-[#252b49]">
+              我的记录
+            </a>
             <a href="/admin" className="text-[#d85f48] hover:text-[#b84d3a]">
               站长入口
             </a>
@@ -377,6 +390,12 @@ export default function Home() {
               className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978] transition active:scale-[.97]"
             >
               关于这里
+            </a>
+            <a
+              href="/history"
+              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978] transition active:scale-[.97]"
+            >
+              我的记录
             </a>
           </nav>
         </header>
@@ -527,6 +546,17 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {dailyTest?.href && (
+            <div className="mt-5 flex flex-col gap-4 rounded-[1.5rem] border border-[#e1c96e] bg-[#fff0bd]/75 p-5 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-[10px] font-black tracking-[.16em] text-[#9c6935]">TODAY'S CHALLENGE · {dailyTest.category}</p>
+                <p className="mt-2 font-serif text-xl font-black text-[#38344a]">今天来测「{dailyTest.title}」</p>
+                <p className="mt-1 text-sm font-semibold text-[#7c6b50]">每天换一道，给好奇心一个小任务。</p>
+              </div>
+              <a href={dailyTest.href} className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#252b49] px-4 text-sm font-black text-[#fff9ea] shadow-[3px_3px_0_#d85f48] transition hover:bg-[#373f64]">开始今日挑战 <ArrowUpRight className="size-4" /></a>
+            </div>
+          )}
 
           {visibleTests.length > 0 ? (
             <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">

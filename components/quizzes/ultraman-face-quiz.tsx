@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, Check, ExternalLink, RotateCcw, Sparkles, X, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
+import { QuizResultActions } from '@/components/quiz-result-actions';
 
 type Hero = {
   name: string;
@@ -324,6 +325,7 @@ export default function Home() {
             <h2 className="mt-6 text-2xl font-black">{rank.label}</h2>
             <p className="mt-2 text-sm text-[#b8c6df]">{rank.text}</p>
             <Button type="button" onClick={restart} className="mt-7 h-11 rounded-2xl bg-[#d54545] px-5 font-black text-white hover:bg-[#bd3535]"><RotateCcw className="size-4" />再认一轮</Button>
+            <QuizResultActions testId="ultraman-face" title="奥特曼认脸局" score={`${score}/${round.length}`} detail={rank.label} href="/ultraman-face" />
           </section>
         ) : null}
         <Community quizName="奥特曼认脸局" tone="sky" />

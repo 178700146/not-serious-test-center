@@ -31,6 +31,26 @@ const validQuiz = (value: unknown) => {
   return quizNames.has(quizName) ? quizName : '';
 };
 
+const commentAttempts = new Map<string, { at: number; content: string }>();
+const COMMENT_COOLDOWN_MS = 15_000;
+const DUPLICATE_WINDOW_MS = 5 * 60_000;
+
+function commentRateLimit(request: Request, visitorId: string, quizName: string, content: string) {
+  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+  const key = `${forwarded || 'unknown'}:${visitorId}:${quizName}`;
+  const now = Date.now();
+  const previous = commentAttempts.get(key);
+  if (previous && now - previous.at < COMMENT_COOLDOWN_MS) return '请稍等几秒再发下一条。';
+  if (previous && previous.content === content && now - previous.at < DUPLICATE_WINDOW_MS) return '这条内容刚刚已经发过了。';
+  commentAttempts.set(key, { at: now, content });
+  if (commentAttempts.size > 2000) {
+    for (const [entryKey, entry] of commentAttempts) {
+      if (now - entry.at > DUPLICATE_WINDOW_MS) commentAttempts.delete(entryKey);
+    }
+  }
+  return null;
+}
+
 function failureResponse(error: unknown, operation: 'load' | 'save') {
   const detail = error instanceof Error ? error.message : String(error);
   console.error(`[community:${operation}]`, detail);
@@ -97,6 +117,8 @@ export async function POST(request: Request) {
       if (content.length < 2 || (rawParent !== null && (!Number.isInteger(rawParent) || rawParent < 1))) {
         return Response.json({ error: 'invalid comment' }, { status: 400 });
       }
+      const limited = commentRateLimit(request, visitorId, quizName, content);
+      if (limited) return Response.json({ error: 'rate_limited', message: limited }, { status: 429 });
       await addComment(quizName, visitorId, nickname, content, rawParent);
     } else {
       return Response.json({ error: 'invalid request' }, { status: 400 });

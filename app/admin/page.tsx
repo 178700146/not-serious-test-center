@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowLeft, Check, Image, LockKeyhole, Save, Settings2 } from 'lucide-react';
+import { ArrowLeft, BarChart3, Check, Image, LockKeyhole, Save, Settings2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,12 +9,21 @@ import { Textarea } from '@/components/ui/textarea';
 import { defaultEditableTests, type EditableTest } from '@/lib/content';
 
 type Status = 'idle' | 'loading' | 'saving' | 'saved' | 'error';
+type Metrics = {
+  comments: number;
+  suggestions: number;
+  feedback: number;
+  reactionScores: number;
+  testReactions: number;
+  commentReactions: number;
+};
 
 export default function AdminPage() {
   const [cards, setCards] = useState<EditableTest[]>(defaultEditableTests);
   const [pin, setPin] = useState('');
   const [status, setStatus] = useState<Status>('loading');
   const [message, setMessage] = useState('');
+  const [metrics, setMetrics] = useState<Metrics | null>(null);
 
   useEffect(() => {
     fetch('/api/content')
@@ -58,6 +67,25 @@ export default function AdminPage() {
     }
   }
 
+  async function loadMetrics() {
+    if (!pin.trim()) {
+      setStatus('error');
+      setMessage('先输入管理口令。');
+      return;
+    }
+    try {
+      const response = await fetch('/api/admin/metrics', { headers: { 'x-admin-pin': pin.trim() }, cache: 'no-store' });
+      const data = await response.json() as { metrics?: Metrics; error?: string };
+      if (!response.ok || !data.metrics) throw new Error(data.error ?? '统计读取失败');
+      setMetrics(data.metrics);
+      setMessage('统计已更新。');
+      setStatus('idle');
+    } catch (error) {
+      setStatus('error');
+      setMessage(error instanceof Error ? error.message : '统计读取失败');
+    }
+  }
+
   return (
     <main className="min-h-screen bg-[#f7f2e7] px-5 py-7 text-[#1d2431] sm:px-8">
       <div className="mx-auto max-w-6xl">
@@ -69,6 +97,14 @@ export default function AdminPage() {
         <section className="mt-10 rounded-[2rem] bg-[#252b49] p-7 text-[#fff8e8] shadow-[0_18px_45px_rgba(37,43,73,.18)] sm:p-9">
           <div className="flex items-start gap-4"><span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#f4ce67] text-[#4b3c21]"><Settings2 className="size-6" /></span><div><p className="text-xs font-black tracking-[.16em] text-[#f4ce67]">CONTROL ROOM</p><h1 className="mt-2 font-serif text-3xl font-black sm:text-4xl">改首页，不用改代码。</h1><p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-[#cbd1df]">这里可以修改 9 个测试的标题、说明、角标和封面图链接。保存后，测试中心首页会读取最新内容。</p></div></div>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-end"><label className="block max-w-sm flex-1 text-sm font-black text-[#fff8e8]">管理口令<Input type="password" value={pin} onChange={(event) => setPin(event.target.value)} placeholder="输入站长口令" className="mt-2 h-11 rounded-xl border-white/15 bg-white/10 text-white placeholder:text-[#9da8c0]" /></label><Button type="button" onClick={save} disabled={status === 'saving' || status === 'loading'} className="h-11 rounded-xl bg-[#d85f48] px-5 font-black text-white hover:bg-[#c5513d]"><Save className="size-4" />{status === 'saving' ? '保存中…' : '保存全部修改'}</Button><p aria-live="polite" className={`text-sm font-bold ${status === 'saved' ? 'text-[#9ae0bd]' : status === 'error' ? 'text-[#ffb8a8]' : 'text-[#cbd1df]'}`}>{message || '口令只用于保存，不会显示在页面上。'}</p></div>
+        </section>
+
+        <section className="mt-7 rounded-[1.7rem] border border-[#2b334d]/12 bg-[#fffdf8]/90 p-5 shadow-[0_10px_26px_rgba(43,51,77,.06)] sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div><p className="text-[10px] font-black tracking-[.14em] text-[#d85f48]">SITE PULSE</p><h2 className="mt-1 text-xl font-black text-[#252b49]">站点统计</h2><p className="mt-1 text-sm font-semibold text-[#777d88]">只读汇总，不展示访客隐私。</p></div>
+            <Button type="button" onClick={() => void loadMetrics()} className="h-10 rounded-xl bg-[#252b49] px-4 text-xs font-black text-white hover:bg-[#373f64]"><BarChart3 className="size-4" />读取统计</Button>
+          </div>
+          {metrics ? <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{([['评论', metrics.comments], ['投稿', metrics.suggestions], ['反馈', metrics.feedback], ['反应成绩', metrics.reactionScores], ['测试反应', metrics.testReactions], ['评论反应', metrics.commentReactions]] as const).map(([label, value]) => <div key={label} className="rounded-2xl bg-[#f3eee2] p-4"><p className="text-xs font-bold text-[#7b808b]">{label}</p><p className="mt-1 text-2xl font-black text-[#252b49]">{value}</p></div>)}</div> : <p className="mt-5 rounded-2xl border border-dashed border-[#c9cbd0] px-4 py-5 text-sm font-semibold text-[#858a95]">输入口令后点击“读取统计”。</p>}
         </section>
 
         <section className="mt-7 grid gap-5 md:grid-cols-2">

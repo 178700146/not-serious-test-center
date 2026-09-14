@@ -14,6 +14,7 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
+import { QuizResultActions } from '@/components/quiz-result-actions';
 
 
 type Question = {
@@ -228,7 +229,7 @@ export default function Home() {
         )}
 
         {phase === 'result' && (
-          <section className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center py-12 text-center"><div className={`rounded-[2rem] border border-[#d6ddd0] bg-gradient-to-br ${result.accent} p-7 shadow-[0_24px_60px_rgba(30,57,41,0.12)] sm:p-10`}><span className="mx-auto grid size-16 place-items-center rounded-3xl bg-[#1e4a38] text-[#fff6df] shadow-lg"><Leaf className="size-8" /></span><p className="mt-7 text-sm font-black tracking-[0.16em] text-[#b65d3d]">你的成绩</p><p className="mt-2 font-serif text-6xl font-black text-[#173827]">{score}<span className="text-2xl text-[#4d6754]"> / {gameQuestions.length}</span></p><h1 className="mt-7 font-serif text-3xl font-black leading-tight text-[#173827] sm:text-4xl">{result.title}</h1><p className="mt-4 text-base text-[#496252]">{result.copy}</p><Button onClick={startGame} size="lg" className="mt-9 h-12 rounded-2xl bg-[#1e4a38] px-6 text-base font-bold text-[#fffbed] hover:bg-[#163a2b]"><RotateCcw className="size-4" /> 再测一次</Button></div><p className="mt-6 text-xs text-[#788579]">仅供趣味测试，野生蘑菇不可凭图片判断是否可食用。</p></section>
+          <section className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center py-12 text-center"><div className={`rounded-[2rem] border border-[#d6ddd0] bg-gradient-to-br ${result.accent} p-7 shadow-[0_24px_60px_rgba(30,57,41,0.12)] sm:p-10`}><span className="mx-auto grid size-16 place-items-center rounded-3xl bg-[#1e4a38] text-[#fff6df] shadow-lg"><Leaf className="size-8" /></span><p className="mt-7 text-sm font-black tracking-[0.16em] text-[#b65d3d]">你的成绩</p><p className="mt-2 font-serif text-6xl font-black text-[#173827]">{score}<span className="text-2xl text-[#4d6754]"> / {gameQuestions.length}</span></p><h1 className="mt-7 font-serif text-3xl font-black leading-tight text-[#173827] sm:text-4xl">{result.title}</h1><p className="mt-4 text-base text-[#496252]">{result.copy}</p><Button onClick={startGame} size="lg" className="mt-9 h-12 rounded-2xl bg-[#1e4a38] px-6 text-base font-bold text-[#fffbed] hover:bg-[#163a2b]"><RotateCcw className="size-4" /> 再测一次</Button></div><QuizResultActions testId="mushroom" title="蘑菇大师" score={`${score}/${gameQuestions.length}`} detail={result.title} href="/mushroom" /><p className="mt-6 text-xs text-[#788579]">仅供趣味测试，野生蘑菇不可凭图片判断是否可食用。</p></section>
         )}
         <Community quizName="蘑菇大师" tone="forest" />
         <footer className="pt-5 text-center text-xs font-medium text-[#809084]">偏门鉴定所 · 雨后特别卷</footer>

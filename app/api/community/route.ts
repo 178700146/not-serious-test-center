@@ -1,5 +1,8 @@
 import { addComment, getCommunity, toggleCommentReaction, toggleTestReaction } from '@/db/community';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 type Reaction = 'like' | 'favorite';
 
 const quizNames = new Set([
@@ -12,6 +15,7 @@ const quizNames = new Set([
   '方言捕手',
   '外语猜国家',
   '昆虫侦探',
+  '反应速度局',
 ]);
 
 const clean = (value: unknown, limit: number) =>
@@ -27,6 +31,30 @@ const validQuiz = (value: unknown) => {
   return quizNames.has(quizName) ? quizName : '';
 };
 
+function failureResponse(error: unknown, operation: 'load' | 'save') {
+  const detail = error instanceof Error ? error.message : String(error);
+  console.error(`[community:${operation}]`, detail);
+
+  if (detail.includes('Supabase 尚未配置')) {
+    return Response.json(
+      { error: 'community_unavailable', message: '讨论区暂时未连接数据库，请管理员检查线上项目的 Supabase 配置。' },
+      { status: 503, headers: { 'Cache-Control': 'no-store' } },
+    );
+  }
+
+  if (/PGRST205|relation .* does not exist|Could not find the table/i.test(detail)) {
+    return Response.json(
+      { error: 'community_schema', message: '讨论区数据库还没有完成初始化，请管理员应用社区迁移。' },
+      { status: 503, headers: { 'Cache-Control': 'no-store' } },
+    );
+  }
+
+  return Response.json(
+    { error: operation === 'load' ? 'load failed' : 'save failed', message: '讨论区暂时不可用，请稍后再试。' },
+    { status: 500, headers: { 'Cache-Control': 'no-store' } },
+  );
+}
+
 export async function GET(request: Request) {
   const params = new URL(request.url).searchParams;
   const quizName = validQuiz(params.get('quiz'));
@@ -36,9 +64,9 @@ export async function GET(request: Request) {
   }
 
   try {
-    return Response.json(await getCommunity(quizName, visitorId));
-  } catch {
-    return Response.json({ error: 'load failed' }, { status: 500 });
+    return Response.json(await getCommunity(quizName, visitorId), { headers: { 'Cache-Control': 'no-store' } });
+  } catch (error) {
+    return failureResponse(error, 'load');
   }
 }
 
@@ -65,7 +93,7 @@ export async function POST(request: Request) {
     } else if (body.kind === 'comment') {
       const content = clean(body.content, 500);
       const nickname = clean(body.nickname, 20);
-      const rawParent = body.parentId === null ? null : Number(body.parentId);
+      const rawParent = body.parentId == null ? null : Number(body.parentId);
       if (content.length < 2 || (rawParent !== null && (!Number.isInteger(rawParent) || rawParent < 1))) {
         return Response.json({ error: 'invalid comment' }, { status: 400 });
       }
@@ -74,7 +102,7 @@ export async function POST(request: Request) {
       return Response.json({ error: 'invalid request' }, { status: 400 });
     }
     return Response.json({ ok: true });
-  } catch {
-    return Response.json({ error: 'save failed' }, { status: 500 });
+  } catch (error) {
+    return failureResponse(error, 'save');
   }
 }

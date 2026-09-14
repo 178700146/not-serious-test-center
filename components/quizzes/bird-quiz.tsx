@@ -5,6 +5,7 @@ import { ArrowRight, Bird, Check, LoaderCircle, RotateCcw, Sparkles, Telescope, 
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
+import naturalMedia from '@/lib/natural-media.json';
 
 type BirdQuestion = {
   name: string;
@@ -113,12 +114,14 @@ export default function Home() {
     setImageCandidates([]);
 
     const loadImage = async () => {
+      const localMedia = (naturalMedia.birds as Record<string, { path: string }>)[question.scientificName]?.path;
+      if (localMedia) return [localMedia];
       const names = question.imageSearchNames ?? [question.scientificName];
       for (const taxonName of names) {
         const params = new URLSearchParams({
           taxon_name: taxonName,
           quality_grade: 'research',
-          photo_license: 'cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa',
+          photo_license: 'cc0,cc-by,cc-by-sa',
           photos: 'true',
           order_by: 'votes',
           order: 'desc',

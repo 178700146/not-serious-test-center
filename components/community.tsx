@@ -1,6 +1,6 @@
 'use client';
 
-import { type FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Bookmark, Heart, MessageCircle, Reply, Send } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -53,23 +53,35 @@ export function Community({ quizName, tone }: { quizName: string; tone: Tone }) 
     finally { setLoading(false); }
   }, [quizName, visitorId]);
 
-  useEffect(() => setVisitorId(readVisitorId(quizName)), [quizName]);
-  useEffect(() => { void refresh(); }, [refresh]);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setVisitorId(readVisitorId(quizName)), 0);
+    return () => window.clearTimeout(timer);
+  }, [quizName]);
+  useEffect(() => {
+    const timer = window.setTimeout(() => { void refresh(); }, 0);
+    return () => window.clearTimeout(timer);
+  }, [refresh]);
 
   const send = async (payload: Record<string, unknown>) => {
-    if (!visitorId) return false;
+    if (!visitorId) { setError('正在准备访客标识，请稍后再试。'); return false; }
     setSubmitting(true);
     try {
       const response = await fetch('/api/community', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...payload, quizName, visitorId }) });
-      if (!response.ok) throw new Error('save failed');
+      if (!response.ok) {
+        const result = await response.json().catch(() => null) as { error?: string; message?: string } | null;
+        throw new Error(result?.message || '这次操作没有保存成功，请稍后再试。');
+      }
       await refresh();
       setError('');
       return true;
-    } catch { setError('这次操作没有保存成功，请稍后再试。'); return false; }
+    } catch (error) {
+      setError(error instanceof Error ? error.message : '这次操作没有保存成功，请稍后再试。');
+      return false;
+    }
     finally { setSubmitting(false); }
   };
 
-  const submitComment = async (event: FormEvent<HTMLFormElement>) => {
+  const submitComment = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement }) => {
     event.preventDefault();
     const form = event.currentTarget;
     const values = new FormData(form);

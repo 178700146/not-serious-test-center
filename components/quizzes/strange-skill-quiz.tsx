@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Bird, Bug, Check, Globe2, Headphones, LoaderCirc
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
 
+
 type QuizKind = 'insects' | 'foreign' | 'bird-calls';
 type Species = { name: string; scientificName: string };
 type LanguageQuestion = { country: string; language: string; code: string; phrase: string; hint: string };

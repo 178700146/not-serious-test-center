@@ -6,6 +6,7 @@ import { ArrowRight, Bird, Check, LoaderCircle, RotateCcw, Sparkles, Telescope, 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
 
+
 type BirdQuestion = {
   name: string;
   scientificName: string;

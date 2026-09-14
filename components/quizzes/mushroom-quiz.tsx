@@ -15,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
 
+
 type Question = {
   name: string;
   scientificName: string;

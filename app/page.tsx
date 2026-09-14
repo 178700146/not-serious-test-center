@@ -484,13 +484,22 @@ export default function Home() {
                       className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}
                     >
                       {test.image ? (
-                        <img
-                          src={test.image}
-                          alt={test.imageAlt ?? `${test.title}测试封面`}
-                          loading="lazy"
-                          decoding="async"
-                          className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
-                        />
+                        <>
+                          <img
+                            src={test.image}
+                            alt={test.imageAlt ?? `${test.title}测试封面`}
+                            loading="lazy"
+                            decoding="async"
+                            className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#182033]/65 via-[#182033]/20 to-transparent"
+                          />
+                          <span className="absolute bottom-3 left-3 max-w-[78%] text-base font-black tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,.45)]">
+                            {test.title}
+                          </span>
+                        </>
                       ) : (
                         <div className="absolute inset-0 grid place-items-center">
                           <Icon
@@ -500,7 +509,7 @@ export default function Home() {
                         </div>
                       )}
                       <span
-                        className={`absolute ${test.id === 'reaction-speed' ? 'right-3' : 'left-3'} top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
+                        className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
                       >
                         {test.state === 'available' ? '现在可测' : '筹备中'}
                       </span>

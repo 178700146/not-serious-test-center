@@ -2,11 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Bug, Check, Globe2, Headphones, LoaderCircle, RotateCcw, Sparkles, Volume2, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Bird, Bug, Check, Globe2, Headphones, LoaderCircle, RotateCcw, Sparkles, Volume2, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
-import naturalMedia from '@/lib/natural-media.json';
 
 type QuizKind = 'insects' | 'foreign' | 'bird-calls';
 type Species = { name: string; scientificName: string };
@@ -47,6 +46,7 @@ export default function Home() {
   const kind = useMemo(() => kindFromPath(pathname ?? ''), [pathname]);
   const meta = copy[kind];
   const Icon = meta.icon;
+  const pool = kind === 'insects' ? insects : kind === 'bird-calls' ? birdCalls : languages;
   const [phase, setPhase] = useState<'intro' | 'playing' | 'result'>('intro');
   const [mode, setMode] = useState<10 | 20>(10);
   const [questions, setQuestions] = useState<Array<(Species | LanguageQuestion) & { options: string[] }>>([]);
@@ -67,13 +67,7 @@ export default function Home() {
     const load = async () => {
       if (kind === 'insects') {
         const item = question as Species;
-        const localMedia = (naturalMedia.insects as Record<string, { path: string }>)[item.scientificName]?.path;
-        if (localMedia) {
-          setMedia(localMedia);
-          setMediaState('ready');
-          return;
-        }
-        const params = new URLSearchParams({ taxon_name: item.scientificName, quality_grade: 'research', photo_license: 'cc0,cc-by,cc-by-sa', photos: 'true', order_by: 'votes', order: 'desc', per_page: '18' });
+        const params = new URLSearchParams({ taxon_name: item.scientificName, quality_grade: 'research', photo_license: 'cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa', photos: 'true', order_by: 'votes', order: 'desc', per_page: '18' });
         const response = await fetch(`https://api.inaturalist.org/v1/observations?${params.toString()}`, { signal: controller.signal });
         if (!response.ok) throw new Error('image');
         const data = await response.json() as { results?: { photos?: { url?: string }[] }[] };

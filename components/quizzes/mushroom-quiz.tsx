@@ -14,7 +14,6 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
-import naturalMedia from '@/lib/natural-media.json';
 
 type Question = {
   name: string;
@@ -122,8 +121,6 @@ export default function Home() {
     setImageState('loading');
     setImageUrl(null);
     const loadImage = async () => {
-      const localMedia = (naturalMedia.mushrooms as Record<string, { path: string }>)[question.scientificName]?.path;
-      if (localMedia) return localMedia;
       if (question.localImage) return question.localImage;
       const names = question.imageSearchNames ?? [question.scientificName];
 
@@ -131,7 +128,7 @@ export default function Home() {
         const params = new URLSearchParams({
           taxon_name: taxonName,
           quality_grade: 'research',
-          photo_license: 'cc0,cc-by,cc-by-sa',
+          photo_license: 'cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa',
           photos: 'true',
           order_by: 'votes',
           order: 'desc',

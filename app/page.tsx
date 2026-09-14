@@ -496,7 +496,7 @@ export default function Home() {
               )}
             </label>
           </div>
-          <div className="mt-6 rounded-[1.35rem] border border-[#2b334d]/10 bg-[#fffdf8]/55 p-2 shadow-[0_8px_20px_rgba(43,51,77,.04)]">
+          <div className="sticky top-2 z-10 mt-6 rounded-[1.35rem] border border-[#2b334d]/10 bg-[#f7f2e7]/90 p-2 shadow-[0_8px_20px_rgba(43,51,77,.08)] backdrop-blur-md md:static md:z-auto md:bg-[#fffdf8]/55 md:shadow-[0_8px_20px_rgba(43,51,77,.04)] md:backdrop-blur-none">
             <div className="flex items-center gap-2 px-2 pb-2 text-[11px] font-black tracking-[0.12em] text-[#858a95] sm:pb-1">
               <SlidersHorizontal className="size-3.5 text-[#d85f48]" />
               <span>按兴趣筛选</span>

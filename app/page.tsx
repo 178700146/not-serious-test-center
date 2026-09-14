@@ -491,7 +491,7 @@ export default function Home() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="搜一个奇怪技能"
-                className="h-11 rounded-2xl border-[#d7d7d2] bg-[#fffdf8]/85 pl-10 pr-10 text-sm shadow-sm placeholder:text-[#a1a4ab]"
+                className="h-11 rounded-2xl border-[#d7d7d2] bg-[#fffdf8]/85 pl-10 pr-10 text-sm shadow-sm placeholder:text-[#a1a4ab] focus-visible:border-[#d85f48] focus-visible:ring-[#d85f48]/25"
               />
               {query && (
                 <button
@@ -699,7 +699,7 @@ export default function Home() {
                     minLength={2}
                     maxLength={120}
                     placeholder="例如：看羽毛猜鸟类"
-                    className="mt-2 h-11 rounded-xl border-[#d7d7d2] bg-[#fffdf8]"
+                    className="mt-2 h-11 rounded-xl border-[#d7d7d2] bg-[#fffdf8] focus-visible:border-[#d85f48] focus-visible:ring-[#d85f48]/25"
                   />
                 </label>
                 <label className="block text-sm font-black text-[#343952]">
@@ -710,7 +710,7 @@ export default function Home() {
                     minLength={2}
                     maxLength={80}
                     placeholder="例如：自称自然爱好者的人"
-                    className="mt-2 h-11 rounded-xl border-[#d7d7d2] bg-[#fffdf8]"
+                    className="mt-2 h-11 rounded-xl border-[#d7d7d2] bg-[#fffdf8] focus-visible:border-[#d85f48] focus-visible:ring-[#d85f48]/25"
                   />
                 </label>
               </div>
@@ -720,7 +720,7 @@ export default function Home() {
                   name="note"
                   maxLength={360}
                   placeholder="哪里有趣、怎么出题，想到什么都可以写。"
-                  className="mt-2 min-h-28 resize-y rounded-xl border-[#d7d7d2] bg-[#fffdf8]"
+                  className="mt-2 min-h-28 resize-y rounded-xl border-[#d7d7d2] bg-[#fffdf8] focus-visible:border-[#d85f48] focus-visible:ring-[#d85f48]/25"
                 />
               </label>
               <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -785,7 +785,7 @@ export default function Home() {
                 minLength={2}
                 maxLength={600}
                 placeholder="比如：题目还想多一点、这里读起来不太顺……"
-                className="mt-2 min-h-24 resize-y rounded-xl border-[#cfc8b9] bg-[#fffdf8]"
+                className="mt-2 min-h-24 resize-y rounded-xl border-[#cfc8b9] bg-[#fffdf8] focus-visible:border-[#d85f48] focus-visible:ring-[#d85f48]/25"
               />
             </label>
             <div className="flex shrink-0 flex-col gap-2">

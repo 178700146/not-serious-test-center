@@ -478,7 +478,7 @@ export default function Home() {
                           alt={test.imageAlt ?? `${test.title}测试封面`}
                           loading="lazy"
                           decoding="async"
-                          className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_center]' : ''}`}
+                          className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
                         />
                       ) : (
                         <div className="absolute inset-0 grid place-items-center">

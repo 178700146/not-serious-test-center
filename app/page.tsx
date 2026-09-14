@@ -362,19 +362,19 @@ export default function Home() {
           >
             <a
               href="#tests"
-              className="shrink-0 rounded-full bg-[#252b49] px-3.5 py-2 text-xs font-bold text-[#fff9ea] shadow-[2px_2px_0_#f0ad50]"
+              className="shrink-0 rounded-full bg-[#252b49] px-3.5 py-2 text-xs font-bold text-[#fff9ea] shadow-[2px_2px_0_#f0ad50] transition active:scale-[.97]"
             >
               全部测试
             </a>
             <a
               href="#ideas"
-              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978]"
+              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978] transition active:scale-[.97]"
             >
               一起出题
             </a>
             <a
               href="#about"
-              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978]"
+              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978] transition active:scale-[.97]"
             >
               关于这里
             </a>
@@ -520,7 +520,7 @@ export default function Home() {
                   type="button"
                   aria-pressed={category === item}
                   onClick={() => setCategory(item)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/45 ${category === item ? 'bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50]' : 'border border-[#d5d4ce] bg-[#fffdf8]/70 text-[#626978] hover:border-[#a9adba] hover:bg-white'}`}
+                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition active:scale-[.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/45 ${category === item ? 'bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50]' : 'border border-[#d5d4ce] bg-[#fffdf8]/70 text-[#626978] hover:border-[#a9adba] hover:bg-white'}`}
                 >
                   {item}
                 </button>
@@ -596,7 +596,7 @@ export default function Home() {
                     key={test.title}
                     href={test.href}
                     style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}
-                    className="shelf-reveal group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]"
+                    className="shelf-reveal group block rounded-[1.65rem] border border-[#2b334d]/12 bg-[#fffdf8]/85 p-3 shadow-[0_10px_25px_rgba(43,51,77,.05)] transition active:scale-[.99] hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(43,51,77,.13)]"
                   >
                     {body}
                   </a>
@@ -836,7 +836,7 @@ export default function Home() {
         <a
           href="#top"
           aria-label="回到顶部"
-          className="fixed bottom-5 right-5 z-20 grid size-11 place-items-center rounded-full border border-[#2b334d]/15 bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50] transition hover:-translate-y-1 hover:bg-[#373f64] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/60"
+          className="fixed bottom-5 right-5 z-20 grid size-11 place-items-center rounded-full border border-[#2b334d]/15 bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50] transition active:scale-[.96] hover:-translate-y-1 hover:bg-[#373f64] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/60"
         >
           <ArrowUp className="size-4" />
         </a>

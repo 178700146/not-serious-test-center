@@ -615,18 +615,31 @@ export default function Home() {
             <div className="mt-7 rounded-[1.65rem] border border-dashed border-[#c5c8cf] bg-[#fffdf8]/65 px-6 py-12 text-center">
               <CircleHelp className="mx-auto size-8 text-[#d85f48]" />
               <p className="mt-4 font-black text-[#303752]">
-                这项奇怪技能还没被收录。
+                {query.trim()
+                  ? `没有找到“${query.trim()}”`
+                  : `“${category}”里暂时没有匹配项`}
               </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setQuery('');
-                  setCategory('全部');
-                }}
-                className="mt-3 text-sm font-bold text-[#d85f48] hover:underline"
-              >
-                回到全部测试
-              </button>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                {query.trim() && (
+                  <button
+                    type="button"
+                    onClick={() => setQuery('')}
+                    className="rounded-full border border-[#d5d4ce] bg-[#fffdf8] px-3.5 py-2 text-sm font-bold text-[#626978] transition hover:border-[#a9adba] hover:bg-white"
+                  >
+                    清空搜索
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery('');
+                    setCategory('全部');
+                  }}
+                  className="rounded-full bg-[#252b49] px-3.5 py-2 text-sm font-bold text-[#fff9ea] shadow-[2px_2px_0_#f0ad50] transition hover:bg-[#373f64]"
+                >
+                  查看全部测试
+                </button>
+              </div>
             </div>
           )}
         </section>

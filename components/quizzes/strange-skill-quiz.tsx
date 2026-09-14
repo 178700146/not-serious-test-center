@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, Bug, Check, Globe2, Headphones, LoaderCircle, Ro
 
 import { Button } from '@/components/ui/button';
 import { Community } from '@/components/community';
-import naturalMedia from '@/lib/natural-media.json';
+
 
 type QuizKind = 'insects' | 'foreign' | 'bird-calls';
 type Species = { name: string; scientificName: string };
@@ -66,14 +66,7 @@ export default function Home() {
     const controller = new AbortController(); setMedia(null); setMediaState('loading');
     const load = async () => {
       if (kind === 'insects') {
-        const item = question as Species;
-        const localMedia = (naturalMedia.insects as Record<string, { path: string }>)[item.scientificName]?.path;
-        if (localMedia) {
-          setMedia(localMedia);
-          setMediaState('ready');
-          return;
-        }
-        const params = new URLSearchParams({ taxon_name: item.scientificName, quality_grade: 'research', photo_license: 'cc0,cc-by,cc-by-sa', photos: 'true', order_by: 'votes', order: 'desc', per_page: '18' });
+        const item = question as Species;const params = new URLSearchParams({ taxon_name: item.scientificName, quality_grade: 'research', photo_license: 'cc0,cc-by,cc-by-nc,cc-by-sa,cc-by-nc-sa', photos: 'true', order_by: 'votes', order: 'desc', per_page: '18' });
         const response = await fetch(`https://api.inaturalist.org/v1/observations?${params.toString()}`, { signal: controller.signal });
         if (!response.ok) throw new Error('image');
         const data = await response.json() as { results?: { photos?: { url?: string }[] }[] };

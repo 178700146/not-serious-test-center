@@ -20,6 +20,7 @@ import {
   Globe2,
   Headphones,
   Timer,
+  X,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -481,8 +482,18 @@ export default function Home() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="搜一个奇怪技能"
-                className="h-11 rounded-2xl border-[#d7d7d2] bg-[#fffdf8]/85 pl-10 text-sm shadow-sm placeholder:text-[#a1a4ab]"
+                className="h-11 rounded-2xl border-[#d7d7d2] bg-[#fffdf8]/85 pl-10 pr-10 text-sm shadow-sm placeholder:text-[#a1a4ab]"
               />
+              {query && (
+                <button
+                  type="button"
+                  aria-label="清空搜索"
+                  onClick={() => setQuery('')}
+                  className="absolute right-2.5 top-1/2 grid size-6 -translate-y-1/2 place-items-center rounded-full text-[#858a95] transition hover:bg-[#eee9de] hover:text-[#303752]"
+                >
+                  <X className="size-3.5" />
+                </button>
+              )}
             </label>
           </div>
           <div className="mt-6 rounded-[1.35rem] border border-[#2b334d]/10 bg-[#fffdf8]/55 p-2 shadow-[0_8px_20px_rgba(43,51,77,.04)]">

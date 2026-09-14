@@ -1,0 +1,1064 @@
+{
+  "generatedAt": "2026-09-11T05:35:33.187Z",
+  "licenses": [
+    "cc0",
+    "cc-by",
+    "cc-by-sa"
+  ],
+  "mushrooms": {
+    "Amanita pantherina": {
+      "path": "/media/natural/mushrooms/amanita-pantherina.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/99389943",
+      "attribution": "(c) Donald Davesne, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 99389943
+    },
+    "Amanita virosa": {
+      "path": "/media/natural/mushrooms/amanita-virosa.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/192714228",
+      "attribution": "(c) Thierry Arbault, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 192714228
+    },
+    "Amanita phalloides": {
+      "path": "/media/natural/mushrooms/amanita-phalloides.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/221717534",
+      "attribution": "(c) Sofia Zvolanek, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 221717534
+    },
+    "Amanita muscaria": {
+      "path": "/media/natural/mushrooms/amanita-muscaria.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/242423358",
+      "attribution": "(c) Johan Adler, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 242423358
+    },
+    "Galerina marginata": {
+      "path": "/media/natural/mushrooms/galerina-marginata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/322915721",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 322915721
+    },
+    "Chlorophyllum molybdites": {
+      "path": "/media/natural/mushrooms/chlorophyllum-molybdites.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/35083730",
+      "attribution": "(c) Douglas Goldman, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 35083730
+    },
+    "Inocybe erubescens": {
+      "path": "/media/natural/mushrooms/inocybe-erubescens.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/122179120",
+      "attribution": "(c) aga_l_, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 122179120
+    },
+    "Paxillus involutus": {
+      "path": "/media/natural/mushrooms/paxillus-involutus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/97027061",
+      "attribution": "(c) Victoria M., some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 97027061
+    },
+    "Lepiota brunneoincarnata": {
+      "path": "/media/natural/mushrooms/lepiota-brunneoincarnata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/244906295",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 244906295
+    },
+    "Hypholoma fasciculare": {
+      "path": "/media/natural/mushrooms/hypholoma-fasciculare.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/67946061",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 67946061
+    },
+    "Pleurotus ostreatus": {
+      "path": "/media/natural/mushrooms/pleurotus-ostreatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/21968122",
+      "attribution": "(c) Katja Schulz, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 21968122
+    },
+    "Auricularia auricula-judae": {
+      "path": "/media/natural/mushrooms/auricularia-auricula-judae.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/331944539",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 331944539
+    },
+    "Lentinula edodes": {
+      "path": "/media/natural/mushrooms/lentinula-edodes.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/152779654",
+      "attribution": "(c) MUNENORI YAMAKAWA, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 152779654
+    },
+    "Cantharellus cibarius": {
+      "path": "/media/natural/mushrooms/cantharellus-cibarius.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/136662503",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 136662503
+    },
+    "Agaricus bisporus": {
+      "path": "/media/natural/mushrooms/agaricus-bisporus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/5229697",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 5229697
+    },
+    "Hericium erinaceus": {
+      "path": "/media/natural/mushrooms/hericium-erinaceus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/4846446",
+      "attribution": "(c) Katja Schulz, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 4846446
+    },
+    "Boletus edulis": {
+      "path": "/media/natural/mushrooms/boletus-edulis.webp",
+      "sourceUrl": "http://www.inaturalist.org/observations/4751351",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 4751351
+    },
+    "Grifola frondosa": {
+      "path": "/media/natural/mushrooms/grifola-frondosa.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/96926770",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 96926770
+    },
+    "Flammulina velutipes": {
+      "path": "/media/natural/mushrooms/flammulina-velutipes.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/169114137",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 169114137
+    },
+    "Entoloma sinuatum": {
+      "path": "/media/natural/mushrooms/entoloma-sinuatum.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/138431069",
+      "attribution": "(c) Lazar Popović, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 138431069
+    },
+    "Omphalotus olearius": {
+      "path": "/media/natural/mushrooms/omphalotus-olearius.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/13091310",
+      "attribution": "(c) Davide Puddu, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 13091310
+    },
+    "Gyromitra esculenta": {
+      "path": "/media/natural/mushrooms/gyromitra-esculenta.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/22103341",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 22103341
+    },
+    "Cortinarius rubellus": {
+      "path": "/media/natural/mushrooms/cortinarius-rubellus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/58488538",
+      "attribution": "(c) Albert Cardona, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 58488538
+    },
+    "Cortinarius orellanus": {
+      "path": "/media/natural/mushrooms/cortinarius-orellanus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/84954351",
+      "attribution": "(c) Jose Castro, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 84954351
+    },
+    "Amanita subjunquillea": {
+      "path": "/media/natural/mushrooms/amanita-subjunquillea.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/311231705",
+      "attribution": "(c) Atsushi Nakajima, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 311231705
+    },
+    "Amanita smithiana": {
+      "path": "/media/natural/mushrooms/amanita-smithiana.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/98076134",
+      "attribution": "(c) Mandy Hackney, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 98076134
+    },
+    "Amanita gemmata": {
+      "path": "/media/natural/mushrooms/amanita-gemmata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/242423358",
+      "attribution": "(c) Johan Adler, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 242423358
+    },
+    "Rubroboletus satanas": {
+      "path": "/media/natural/mushrooms/rubroboletus-satanas.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/233503727",
+      "attribution": "(c) Fyodor Pudovikov, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 233503727
+    },
+    "Amanita ocreata": {
+      "path": "/media/natural/mushrooms/amanita-ocreata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/20394318",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 20394318
+    },
+    "Clitocybe dealbata": {
+      "path": "/media/natural/mushrooms/clitocybe-dealbata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/62173562",
+      "attribution": "(c) Kurt Miller, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 62173562
+    },
+    "Tricholoma pardinum": {
+      "path": "/media/natural/mushrooms/tricholoma-pardinum.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/63750191",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 63750191
+    },
+    "Russula emetica": {
+      "path": "/media/natural/mushrooms/russula-emetica.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/311966547",
+      "attribution": "(c) Scott Shanks, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 311966547
+    },
+    "Inocybe geophylla": {
+      "path": "/media/natural/mushrooms/inocybe-geophylla.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/19171325",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 19171325
+    },
+    "Pleurotus eryngii": {
+      "path": "/media/natural/mushrooms/pleurotus-eryngii.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/333309518",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 333309518
+    },
+    "Volvariella volvacea": {
+      "path": "/media/natural/mushrooms/volvariella-volvacea.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/222666094",
+      "attribution": "(c) Kurt Miller, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 222666094
+    },
+    "Morchella esculenta": {
+      "path": "/media/natural/mushrooms/morchella-esculenta.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/101750576",
+      "attribution": "(c) Сергей Неклюдов, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 101750576
+    },
+    "Chlorophyllum brunneum": {
+      "path": "/media/natural/mushrooms/chlorophyllum-brunneum.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/11926571",
+      "attribution": "(c) LJ Moore-McClelland, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 11926571
+    },
+    "Tuber melanosporum": {
+      "path": "/media/natural/mushrooms/tuber-melanosporum.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/19588598",
+      "attribution": "(c) Adrien Nouailhane, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 19588598
+    },
+    "Tricholoma matsutake": {
+      "path": "/media/natural/mushrooms/tricholoma-matsutake.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/93015673",
+      "attribution": "(c) Andreas Schneider, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 93015673
+    },
+    "Lactarius deliciosus": {
+      "path": "/media/natural/mushrooms/lactarius-deliciosus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/253233776",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 253233776
+    },
+    "Phallus indusiatus": {
+      "path": "/media/natural/mushrooms/phallus-indusiatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/108495371",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 108495371
+    },
+    "Auricularia heimuer": {
+      "path": "/media/natural/mushrooms/auricularia-heimuer.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/82237283",
+      "attribution": "(c) Beah Vega, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 82237283
+    },
+    "Boletus pinophilus": {
+      "path": "/media/natural/mushrooms/boletus-pinophilus.webp",
+      "sourceUrl": "http://www.inaturalist.org/observations/4750416",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 4750416
+    },
+    "Tremella fuciformis": {
+      "path": "/media/natural/mushrooms/tremella-fuciformis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/62367946",
+      "attribution": "(c) Alex Abair, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 62367946
+    },
+    "Hypsizygus marmoreus": {
+      "path": "/media/natural/mushrooms/hypsizygus-marmoreus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/17854792",
+      "attribution": "(c) Brian C. Hunt, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 17854792
+    },
+    "Cyclocybe aegerita": {
+      "path": "/media/natural/mushrooms/cyclocybe-aegerita.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/192802587",
+      "attribution": "(c) Ross Krisztina, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 192802587
+    },
+    "Coprinus comatus": {
+      "path": "/media/natural/mushrooms/coprinus-comatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/58497477",
+      "attribution": "(c) Tom Norton, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 58497477
+    },
+    "Ganoderma lingzhi": {
+      "path": "/media/natural/mushrooms/ganoderma-lingzhi.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/99978060",
+      "attribution": "(c) Elena_Sherehora, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 99978060
+    },
+    "Pholiota nameko": {
+      "path": "/media/natural/mushrooms/pholiota-nameko.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/107941017",
+      "attribution": "(c) Atsushi Nakajima, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 107941017
+    },
+    "Termitomyces albuminosus": {
+      "path": "/media/natural/mushrooms/termitomyces-albuminosus.webp",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2011-06-10_Termitomyces_albuminosa_150361.jpg",
+      "attribution": "Josef Papi (Mushroom Observer user kabutiphilippines)",
+      "license": "CC-BY-SA-3.0",
+      "observationId": null
+    }
+  },
+  "birds": {
+    "Pycnonotus sinensis": {
+      "path": "/media/natural/birds/pycnonotus-sinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/26302690",
+      "attribution": "(c) Thibaud Aronson, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 26302690
+    },
+    "Upupa epops": {
+      "path": "/media/natural/birds/upupa-epops.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/299928082",
+      "attribution": "(c) Dmitry Ivanov, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 299928082
+    },
+    "Aix galericulata": {
+      "path": "/media/natural/birds/aix-galericulata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/102309745",
+      "attribution": "(c) Blake Ross, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 102309745
+    },
+    "Alcedo atthis": {
+      "path": "/media/natural/birds/alcedo-atthis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/98375354",
+      "attribution": "(c) Alexis Lours, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 98375354
+    },
+    "Pica serica": {
+      "path": "/media/natural/birds/pica-serica.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/205466820",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 205466820
+    },
+    "Phoenicurus auroreus": {
+      "path": "/media/natural/birds/phoenicurus-auroreus.webp",
+      "sourceUrl": "http://www.inaturalist.org/observations/2649309",
+      "attribution": "(c) harum.koh, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 2649309
+    },
+    "Oriolus chinensis": {
+      "path": "/media/natural/birds/oriolus-chinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/269417960",
+      "attribution": "(c) Adam Kamal, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 269417960
+    },
+    "Urocissa erythroryncha": {
+      "path": "/media/natural/birds/urocissa-erythroryncha.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/105145049",
+      "attribution": "(c) Jagdish Singh Negi, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 105145049
+    },
+    "Lanius cristatus": {
+      "path": "/media/natural/birds/lanius-cristatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/102098511",
+      "attribution": "(c) 尹若宇, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 102098511
+    },
+    "Zosterops simplex": {
+      "path": "/media/natural/birds/zosterops-simplex.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/13421589",
+      "attribution": "(c) portioid, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 13421589
+    },
+    "Phylloscopus inornatus": {
+      "path": "/media/natural/birds/phylloscopus-inornatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/301158360",
+      "attribution": "(c) Rejoice Gassah, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 301158360
+    },
+    "Acridotheres cristatellus": {
+      "path": "/media/natural/birds/acridotheres-cristatellus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/313429358",
+      "attribution": "(c) Naelin, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 313429358
+    },
+    "Aegithalos glaucogularis": {
+      "path": "/media/natural/birds/aegithalos-glaucogularis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/102527219",
+      "attribution": "(c) Zinogre, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 102527219
+    },
+    "Carpodacus erythrinus": {
+      "path": "/media/natural/birds/carpodacus-erythrinus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/49253323",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 49253323
+    },
+    "Emberiza tristrami": {
+      "path": "/media/natural/birds/emberiza-tristrami.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/87510180",
+      "attribution": "(c) egorbirder, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 87510180
+    },
+    "Motacilla alba": {
+      "path": "/media/natural/birds/motacilla-alba.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/273408713",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 273408713
+    },
+    "Turdus merula": {
+      "path": "/media/natural/birds/turdus-merula.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/20490738",
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 20490738
+    },
+    "Spodiopsar cineraceus": {
+      "path": "/media/natural/birds/spodiopsar-cineraceus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/153977732",
+      "attribution": "(c) Lawrence Hylton, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 153977732
+    },
+    "Phasianus colchicus": {
+      "path": "/media/natural/birds/phasianus-colchicus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/77794790",
+      "attribution": "(c) John Krampl, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 77794790
+    },
+    "Streptopelia orientalis": {
+      "path": "/media/natural/birds/streptopelia-orientalis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/87511281",
+      "attribution": "(c) egorbirder, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 87511281
+    },
+    "Ardea alba": {
+      "path": "/media/natural/birds/ardea-alba.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/105335485",
+      "attribution": "(c) ecovore, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 105335485
+    },
+    "Anser anser": {
+      "path": "/media/natural/birds/anser-anser.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/53080280",
+      "attribution": "(c) Nils, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 53080280
+    },
+    "Fulica atra": {
+      "path": "/media/natural/birds/fulica-atra.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/291316043",
+      "attribution": "(c) Alexis Lours, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 291316043
+    },
+    "Accipiter trivirgatus": {
+      "path": "/media/natural/birds/accipiter-trivirgatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/96230321",
+      "attribution": "(c) 雲一百香果, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 96230321
+    },
+    "Hirundo rustica": {
+      "path": "/media/natural/birds/hirundo-rustica.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/239048645",
+      "attribution": "(c) Diego González Dopico, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 239048645
+    },
+    "Sterna hirundo": {
+      "path": "/media/natural/birds/sterna-hirundo.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/14902467",
+      "attribution": "(c) Jonathan Layman, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 14902467
+    },
+    "Garrulax canorus": {
+      "path": "/media/natural/birds/garrulax-canorus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/342426120",
+      "attribution": "(c) WATANABE Hitoshi 渡辺仁, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 342426120
+    },
+    "Corvus macrorhynchos": {
+      "path": "/media/natural/birds/corvus-macrorhynchos.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/102226388",
+      "attribution": "(c) Hopeland, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 102226388
+    },
+    "Anas poecilorhyncha": {
+      "path": "/media/natural/birds/anas-poecilorhyncha.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/154231881",
+      "attribution": "(c) avocat, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 154231881
+    },
+    "Caprimulgus europaeus": {
+      "path": "/media/natural/birds/caprimulgus-europaeus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/97243486",
+      "attribution": "(c) Andrew Bazdyrev, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 97243486
+    },
+    "Eophona migratoria": {
+      "path": "/media/natural/birds/eophona-migratoria.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/106663221",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 106663221
+    },
+    "Cyanopica cyanus": {
+      "path": "/media/natural/birds/cyanopica-cyanus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/71373412",
+      "attribution": "(c) Andrew Bazdyrev, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 71373412
+    },
+    "Falco tinnunculus": {
+      "path": "/media/natural/birds/falco-tinnunculus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/349725257",
+      "attribution": "(c) Дмитрий Кошелев, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 349725257
+    },
+    "Ardea cinerea": {
+      "path": "/media/natural/birds/ardea-cinerea.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/175683345",
+      "attribution": "(c) Surabhi Srivastava, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 175683345
+    },
+    "Parus major": {
+      "path": "/media/natural/birds/parus-major.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/258365796",
+      "attribution": "(c) SteveM4560, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 258365796
+    },
+    "Spilopelia chinensis": {
+      "path": "/media/natural/birds/spilopelia-chinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/39425600",
+      "attribution": "(c) William Stephens, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 39425600
+    },
+    "Egretta garzetta": {
+      "path": "/media/natural/birds/egretta-garzetta.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/263057515",
+      "attribution": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 263057515
+    },
+    "Nycticorax nycticorax": {
+      "path": "/media/natural/birds/nycticorax-nycticorax.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/33469298",
+      "attribution": "(c) Suanne Pyle, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 33469298
+    },
+    "Ardeola bacchus": {
+      "path": "/media/natural/birds/ardeola-bacchus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/101600110",
+      "attribution": "(c) Marco Chan, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 101600110
+    },
+    "Anas platyrhynchos": {
+      "path": "/media/natural/birds/anas-platyrhynchos.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/21203884",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 21203884
+    },
+    "Tadorna ferruginea": {
+      "path": "/media/natural/birds/tadorna-ferruginea.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/72753388",
+      "attribution": "(c) egorbirder, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 72753388
+    },
+    "Gallinula chloropus": {
+      "path": "/media/natural/birds/gallinula-chloropus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/340812069",
+      "attribution": "(c) Radu Teodoreanu, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 340812069
+    },
+    "Buteo japonicus": {
+      "path": "/media/natural/birds/buteo-japonicus.webp",
+      "sourceUrl": "http://www.inaturalist.org/observations/1234027",
+      "attribution": "(c) Kim, Hyun-tae, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 1234027
+    },
+    "Falco amurensis": {
+      "path": "/media/natural/birds/falco-amurensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/356371111",
+      "attribution": "(c) Chandu Bandi, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 356371111
+    },
+    "Apus apus": {
+      "path": "/media/natural/birds/apus-apus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/163450373",
+      "attribution": "(c) Константин Селивёрстов, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 163450373
+    },
+    "Cecropis daurica": {
+      "path": "/media/natural/birds/cecropis-daurica.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/74049479",
+      "attribution": "(c) egorbirder, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 74049479
+    },
+    "Dendrocitta formosae": {
+      "path": "/media/natural/birds/dendrocitta-formosae.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/129881502",
+      "attribution": "(c) Morten Ross, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 129881502
+    },
+    "Accipiter nisus": {
+      "path": "/media/natural/birds/accipiter-nisus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/71955281",
+      "attribution": "(c) egorbirder, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 71955281
+    },
+    "Phalacrocorax carbo": {
+      "path": "/media/natural/birds/phalacrocorax-carbo.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/178891179",
+      "attribution": "(c) Bartosz Czołczyński, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 178891179
+    },
+    "Amaurornis phoenicurus": {
+      "path": "/media/natural/birds/amaurornis-phoenicurus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/73287324",
+      "attribution": "(c) Vihansith Kulatunga, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 73287324
+    }
+  },
+  "insects": {
+    "Teinopalpus aureus": {
+      "path": "/media/natural/insects/teinopalpus-aureus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/152248676",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 152248676
+    },
+    "Ramulus irregulariterdentatus": {
+      "path": "/media/natural/insects/ramulus-irregulariterdentatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/371563293",
+      "attribution": "(c) りなべる, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 371563293
+    },
+    "Papilio maraho": {
+      "path": "/media/natural/insects/papilio-maraho.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/287899109",
+      "attribution": "(c) Licheng Shih, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 287899109
+    },
+    "Luehdorfia chinensis": {
+      "path": "/media/natural/insects/luehdorfia-chinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/341651727",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 341651727
+    },
+    "Actias selene": {
+      "path": "/media/natural/insects/actias-selene.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/78320421",
+      "attribution": "(c) Lawrence Hylton, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 78320421
+    },
+    "Rhodinia jankowskii": {
+      "path": "/media/natural/insects/rhodinia-jankowskii.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/225689320",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 225689320
+    },
+    "Cnidocampa flavescens": {
+      "path": "/media/natural/insects/cnidocampa-flavescens.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/306186882",
+      "attribution": "(c) Teá Montagna, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 306186882
+    },
+    "Gastropacha quercifolia": {
+      "path": "/media/natural/insects/gastropacha-quercifolia.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/180252748",
+      "attribution": "(c) SteveM4560, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 180252748
+    },
+    "Phalacrognathus muelleri": {
+      "path": "/media/natural/insects/phalacrognathus-muelleri.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/255978406",
+      "attribution": "(c) Kai Squires, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 255978406
+    },
+    "Pyrops candelaria": {
+      "path": "/media/natural/insects/pyrops-candelaria.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/56734652",
+      "attribution": "(c) Lawrence Hylton, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 56734652
+    },
+    "Coccinella septempunctata": {
+      "path": "/media/natural/insects/coccinella-septempunctata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/27921342",
+      "attribution": "(c) Guido Bohne, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 27921342
+    },
+    "Bombus terrestris": {
+      "path": "/media/natural/insects/bombus-terrestris.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/239271260",
+      "attribution": "(c) Samuele Papeschi, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 239271260
+    },
+    "Sceliphron madraspatanum": {
+      "path": "/media/natural/insects/sceliphron-madraspatanum.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/179694766",
+      "attribution": "(c) Roman, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 179694766
+    },
+    "Mantis religiosa": {
+      "path": "/media/natural/insects/mantis-religiosa.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/248318729",
+      "attribution": "(c) Ram Dayal Vaishnav, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 248318729
+    },
+    "Locusta migratoria": {
+      "path": "/media/natural/insects/locusta-migratoria.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/362635867",
+      "attribution": "(c) William Harland, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 362635867
+    },
+    "Cyrtotrachelus buqueti": {
+      "path": "/media/natural/insects/cyrtotrachelus-buqueti.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/304651658",
+      "attribution": "(c) Ian Dugdale, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 304651658
+    },
+    "Cybister chinensis": {
+      "path": "/media/natural/insects/cybister-chinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/225682648",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 225682648
+    },
+    "Lethocerus indicus": {
+      "path": "/media/natural/insects/lethocerus-indicus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/215231123",
+      "attribution": "(c) Zheng-An Wang, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 215231123
+    },
+    "Tipula oleracea": {
+      "path": "/media/natural/insects/tipula-oleracea.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/23971083",
+      "attribution": "(c) Joseph Rojas, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 23971083
+    },
+    "Tenodera sinensis": {
+      "path": "/media/natural/insects/tenodera-sinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/139512084",
+      "attribution": "(c) Bill Keim, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 139512084
+    },
+    "Trypoxylus dichotomus": {
+      "path": "/media/natural/insects/trypoxylus-dichotomus.webp",
+      "sourceUrl": "http://www.inaturalist.org/observations/2510025",
+      "attribution": "(c) Kim, Hyun-tae, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 2510025
+    },
+    "Acalolepta fraudatrix": {
+      "path": "/media/natural/insects/acalolepta-fraudatrix.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/84933735",
+      "attribution": "(c) MUNENORI YAMAKAWA, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 84933735
+    },
+    "Papilio xuthus": {
+      "path": "/media/natural/insects/papilio-xuthus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/208214273",
+      "attribution": "(c) RX ZHANG, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 208214273
+    },
+    "Papilio polytes": {
+      "path": "/media/natural/insects/papilio-polytes.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/177949508",
+      "attribution": "(c) Vaishnav K V, some rights reserved (CC BY-SA)",
+      "license": "CC-BY-SA",
+      "observationId": 177949508
+    },
+    "Danaus genutia": {
+      "path": "/media/natural/insects/danaus-genutia.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/253983059",
+      "attribution": "(c) mnauky, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 253983059
+    },
+    "Morpho menelaus": {
+      "path": "/media/natural/insects/morpho-menelaus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/102233711",
+      "attribution": "(c) Lucas Kaminski, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 102233711
+    },
+    "Pachliopta aristolochiae": {
+      "path": "/media/natural/insects/pachliopta-aristolochiae.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/152365970",
+      "attribution": "(c) Cheongweei Gan, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 152365970
+    },
+    "Samia cynthia": {
+      "path": "/media/natural/insects/samia-cynthia.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/62110822",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 62110822
+    },
+    "Attacus atlas": {
+      "path": "/media/natural/insects/attacus-atlas.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/38181000",
+      "attribution": "(c) Oleg Kosterin, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 38181000
+    },
+    "Clanis bilineata": {
+      "path": "/media/natural/insects/clanis-bilineata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/108939352",
+      "attribution": "(c) Cheryl Stinchcomb, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 108939352
+    },
+    "Sesia apiformis": {
+      "path": "/media/natural/insects/sesia-apiformis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/124212737",
+      "attribution": "(c) Дмитрий Кардашин, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 124212737
+    },
+    "Anoplophora chinensis": {
+      "path": "/media/natural/insects/anoplophora-chinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/291959144",
+      "attribution": "(c) Ken-ichi Ueda, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 291959144
+    },
+    "Apriona swainsoni": {
+      "path": "/media/natural/insects/apriona-swainsoni.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/277271514",
+      "attribution": "(c) Cheryl Stinchcomb, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 277271514
+    },
+    "Pyrocoelia analis": {
+      "path": "/media/natural/insects/pyrocoelia-analis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/58490480",
+      "attribution": "(c) Licheng Shih, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 58490480
+    },
+    "Prosopocoilus inclinatus": {
+      "path": "/media/natural/insects/prosopocoilus-inclinatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/309117065",
+      "attribution": "(c) Saryu Mae 前 朝琉, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 309117065
+    },
+    "Protaetia brevitarsis": {
+      "path": "/media/natural/insects/protaetia-brevitarsis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/305467726",
+      "attribution": "(c) kirinzi, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 305467726
+    },
+    "Curculio elephas": {
+      "path": "/media/natural/insects/curculio-elephas.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/29526118",
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 29526118
+    },
+    "Henosepilachna vigintioctopunctata": {
+      "path": "/media/natural/insects/henosepilachna-vigintioctopunctata.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/388187702",
+      "attribution": "(c) Eli, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 388187702
+    },
+    "Apis cerana": {
+      "path": "/media/natural/insects/apis-cerana.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/103288237",
+      "attribution": "(c) Rajesh Balakrishnan, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 103288237
+    },
+    "Vespa mandarinia": {
+      "path": "/media/natural/insects/vespa-mandarinia.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/65153222",
+      "attribution": "(c) WATANABE Hitoshi 渡辺仁, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 65153222
+    },
+    "Myrmeleon formicarius": {
+      "path": "/media/natural/insects/myrmeleon-formicarius.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/122528071",
+      "attribution": "(c) Николай Крылов, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 122528071
+    },
+    "Anax junius": {
+      "path": "/media/natural/insects/anax-junius.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/189511046",
+      "attribution": "(c) Sylvain Eichhorn, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 189511046
+    },
+    "Calopteryx splendens": {
+      "path": "/media/natural/insects/calopteryx-splendens.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/206176300",
+      "attribution": "(c) Oleg Kosterin, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 206176300
+    },
+    "Oxya chinensis": {
+      "path": "/media/natural/insects/oxya-chinensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/134849441",
+      "attribution": "(c) jamie bee, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 134849441
+    },
+    "Gryllus bimaculatus": {
+      "path": "/media/natural/insects/gryllus-bimaculatus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/55266782",
+      "attribution": "(c) Viral joshi, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 55266782
+    },
+    "Mecopoda niponensis": {
+      "path": "/media/natural/insects/mecopoda-niponensis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/388774558",
+      "attribution": "(c) 呂一起(Lyu yi-chi), some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 388774558
+    },
+    "Gerris lacustris": {
+      "path": "/media/natural/insects/gerris-lacustris.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/271467760",
+      "attribution": "no rights reserved",
+      "license": "CC0",
+      "observationId": 271467760
+    },
+    "Tessaratoma papillosa": {
+      "path": "/media/natural/insects/tessaratoma-papillosa.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/91112903",
+      "attribution": "(c) Lawrence Hylton, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 91112903
+    },
+    "Leptocentrus taurus": {
+      "path": "/media/natural/insects/leptocentrus-taurus.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/176126011",
+      "attribution": "(c) Emanuel Kern, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 176126011
+    },
+    "Cicadella viridis": {
+      "path": "/media/natural/insects/cicadella-viridis.webp",
+      "sourceUrl": "https://www.inaturalist.org/observations/6705573",
+      "attribution": "(c) portioid, some rights reserved (CC BY)",
+      "license": "CC-BY",
+      "observationId": 6705573
+    }
+  }
+}

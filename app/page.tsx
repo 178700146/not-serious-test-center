@@ -352,6 +352,10 @@ export default function Home() {
           className="grid items-end gap-9 pb-10 pt-16 lg:grid-cols-[1.08fr_.92fr] lg:pb-16 lg:pt-24"
         >
           <div>
+            <div className="mb-5 flex items-center gap-3 text-[11px] font-black tracking-[0.16em] text-[#8b6b58]">
+              <span className="h-px w-10 bg-[#d85f48]" aria-hidden="true" />
+              <span>NOT-SO-SERIOUS LAB · ISSUE 01</span>
+            </div>
             <div className="mb-6 inline-flex -rotate-2 items-center gap-2 rounded-full border border-[#d9b75f] bg-[#fff0bd] px-3.5 py-2 text-xs font-black tracking-[0.09em] text-[#745123] shadow-[3px_3px_0_#e2b756]">
               <Sparkles className="size-3.5" /> 今日宜：好奇一点
             </div>
@@ -399,14 +403,17 @@ export default function Home() {
                 <span className="rounded-full bg-[#f4ce67] px-3 py-1 text-[11px] font-black tracking-[0.1em] text-[#4a3b21]">
                   中心档案
                 </span>
-                <span className="text-xs font-bold text-[#aeb5c9]">
-                  ISSUE 01
+                <span className="text-[11px] font-black tracking-[0.12em] text-[#aeb5c9]">
+                  2026 · OPEN
                 </span>
               </div>
               <p className="mt-12 font-serif text-3xl font-black leading-none">
                 把好奇心
                 <br />
                 当作一项技能。
+              </p>
+              <p className="mt-4 max-w-[15rem] text-xs font-semibold leading-5 text-[#cbd1df]">
+                一张给奇怪问题的长期通行证。
               </p>
               <div className="mt-10 grid grid-cols-2 border-t border-white/15 pt-4 text-xs">
                 <div>
@@ -417,6 +424,10 @@ export default function Home() {
                   <p className="font-bold text-[#aeb5c9]">正在筹备</p>
                   <p className="mt-1 text-xl font-black text-[#f4ce67]">02</p>
                 </div>
+              </div>
+              <div className="mt-5 flex items-center justify-between border-t border-white/15 pt-3 text-[10px] font-black tracking-[0.12em] text-[#aeb5c9]">
+                <span>好奇心 · 随手测</span>
+                <span>NO. 010</span>
               </div>
             </div>
             <div className="absolute -bottom-5 -left-5 grid size-16 -rotate-12 place-items-center rounded-full border-[5px] border-[#fffdf7] bg-[#d85f48] text-center text-[10px] font-black leading-3 text-white shadow-md">
@@ -478,7 +489,7 @@ export default function Home() {
                           alt={test.imageAlt ?? `${test.title}测试封面`}
                           loading="lazy"
                           decoding="async"
-                          className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_center]' : ''}`}
+                          className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
                         />
                       ) : (
                         <div className="absolute inset-0 grid place-items-center">
@@ -489,7 +500,7 @@ export default function Home() {
                         </div>
                       )}
                       <span
-                        className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
+                        className={`absolute ${test.id === 'reaction-speed' ? 'right-3' : 'left-3'} top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
                       >
                         {test.state === 'available' ? '现在可测' : '筹备中'}
                       </span>

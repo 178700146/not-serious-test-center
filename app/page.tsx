@@ -311,7 +311,7 @@ export default function Home() {
       />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:px-12">
-        <header className="flex items-center justify-between gap-4">
+        <header className="flex flex-wrap items-center justify-between gap-4">
           <a
             href="#top"
             className="group inline-flex items-center gap-3"
@@ -346,6 +346,29 @@ export default function Home() {
           <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">
             已收录 10 项
           </span>
+          <nav
+            aria-label="手机快捷导航"
+            className="order-3 flex basis-full gap-2 overflow-x-auto border-t border-[#2b334d]/10 pt-3 md:hidden [scrollbar-width:none]"
+          >
+            <a
+              href="#tests"
+              className="shrink-0 rounded-full bg-[#252b49] px-3.5 py-2 text-xs font-bold text-[#fff9ea] shadow-[2px_2px_0_#f0ad50]"
+            >
+              全部测试
+            </a>
+            <a
+              href="#ideas"
+              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978]"
+            >
+              一起出题
+            </a>
+            <a
+              href="#about"
+              className="shrink-0 rounded-full border border-[#d5d4ce] bg-[#fffdf8]/70 px-3.5 py-2 text-xs font-bold text-[#626978]"
+            >
+              关于这里
+            </a>
+          </nav>
         </header>
 
         <section

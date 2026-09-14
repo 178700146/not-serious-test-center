@@ -15,6 +15,7 @@ import {
   Search,
   Send,
   Sparkles,
+  SlidersHorizontal,
   Telescope,
   Globe2,
   Headphones,
@@ -461,17 +462,27 @@ export default function Home() {
               />
             </label>
           </div>
-          <div className="mt-6 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none]">
-            {categories.map((item) => (
-              <button
-                key={item}
-                type="button"
-                onClick={() => setCategory(item)}
-                className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition ${category === item ? 'bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50]' : 'border border-[#d5d4ce] bg-[#fffdf8]/70 text-[#626978] hover:border-[#a9adba]'}`}
-              >
-                {item}
-              </button>
-            ))}
+          <div className="mt-6 rounded-[1.35rem] border border-[#2b334d]/10 bg-[#fffdf8]/55 p-2 shadow-[0_8px_20px_rgba(43,51,77,.04)]">
+            <div className="flex items-center gap-2 px-2 pb-2 text-[11px] font-black tracking-[0.12em] text-[#858a95] sm:pb-1">
+              <SlidersHorizontal className="size-3.5 text-[#d85f48]" />
+              <span>按兴趣筛选</span>
+              <span className="ml-auto tracking-normal text-[#9b9da4]">
+                {visibleTests.length} 项
+              </span>
+            </div>
+            <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  aria-pressed={category === item}
+                  onClick={() => setCategory(item)}
+                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/45 ${category === item ? 'bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50]' : 'border border-[#d5d4ce] bg-[#fffdf8]/70 text-[#626978] hover:border-[#a9adba] hover:bg-white'}`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
 
           {visibleTests.length > 0 ? (

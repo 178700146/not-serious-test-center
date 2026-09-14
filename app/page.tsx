@@ -489,7 +489,7 @@ export default function Home() {
                         </div>
                       )}
                       <span
-                        className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
+                        className={`absolute ${test.id === 'reaction-speed' ? 'right-3' : 'left-3'} top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
                       >
                         {test.state === 'available' ? '现在可测' : '筹备中'}
                       </span>

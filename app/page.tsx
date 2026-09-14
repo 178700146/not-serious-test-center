@@ -96,7 +96,7 @@ const tests: TestCard[] = [
   },
   {
     id: 'ultraman-sound',
-    category: '冷知识',
+    category: '观察力',
     eyebrow: 'NO. 005 · 50 题库｜10 / 20 题可选',
     title: '奥特曼听声局',
     description: '听叫声，从四个名字里选出这位光之巨人。',

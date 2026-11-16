@@ -649,6 +649,13 @@ export default function Home() {
                     >
                       {test.image ? (
                         <>
+                          {illustratedCover && (
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-0 scale-110 bg-cover bg-center opacity-35 blur-md"
+                              style={{ backgroundImage: `url(${test.image})` }}
+                            />
+                          )}
                           <img
                             src={test.image}
                             srcSet={responsiveCover ? `/covers/responsive/${test.id}-480.webp 480w, /covers/responsive/${test.id}-960.webp 960w` : undefined}
@@ -659,7 +666,7 @@ export default function Home() {
                             onError={(event) => {
                               event.currentTarget.style.display = 'none';
                             }}
-                            className={`size-full ${illustratedCover ? 'object-contain' : 'object-cover transition duration-500 group-hover:scale-105'} ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
+                            className={`relative z-[1] size-full ${illustratedCover ? 'object-contain' : 'object-cover transition duration-500 group-hover:scale-105'} ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
                           />
                           {!illustratedCover && <><div
                             aria-hidden="true"

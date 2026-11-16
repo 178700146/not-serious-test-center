@@ -638,10 +638,10 @@ export default function Home() {
             <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {visibleTests.map((test, index) => {
                 const Icon = test.icon;
-                // These covers contain their own typography, so preserve the full artwork
-                // instead of cropping the title away with object-cover.
+                // Poster covers keep their full canvas; photo covers fill the shared 3:2 frame.
                 const illustratedCover = test.id === 'mbti' || test.id === 'attachment' || test.id === 'mushroom' || test.id === 'bird';
-                const responsiveCover = !illustratedCover && test.image === tests.find((original) => original.id === test.id)?.image;
+                const preserveFullArtwork = test.id === 'mbti' || test.id === 'attachment';
+                const responsiveCover = !preserveFullArtwork && test.image === tests.find((original) => original.id === test.id)?.image;
                 const body = (
                   <>
                     <div
@@ -649,7 +649,7 @@ export default function Home() {
                     >
                       {test.image ? (
                         <>
-                          {illustratedCover && (
+                          {preserveFullArtwork && (
                             <div
                               aria-hidden="true"
                               className="absolute inset-0 scale-110 bg-cover bg-center opacity-35 blur-md"
@@ -666,7 +666,7 @@ export default function Home() {
                             onError={(event) => {
                               event.currentTarget.style.display = 'none';
                             }}
-                            className={`relative z-[1] size-full ${illustratedCover ? 'object-contain' : 'object-cover transition duration-500 group-hover:scale-105'} ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
+                            className={`relative z-[1] size-full ${preserveFullArtwork ? 'object-contain' : 'object-cover transition duration-500 group-hover:scale-105'} ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'bird' ? 'object-[42%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
                           />
                           {!illustratedCover && <><div
                             aria-hidden="true"

@@ -1,6 +1,15 @@
 'use client';
 
-import { type FormEvent, useEffect, useMemo, useState } from 'react';
+import {
+  type ComponentProps,
+  type CSSProperties,
+  type FormEvent,
+  type PointerEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   ArrowUpRight,
   ArrowUp,
@@ -31,7 +40,7 @@ import type { EditableTest } from '@/lib/content';
 
 type TestCard = {
   id: string;
-  category: '自然界' | '观察力' | '冷知识' | '奇怪技能';
+  category: '自然界' | '观察力' | '冷知识' | '奇怪技能' | '自我探索';
   eyebrow: string;
   title: string;
   description: string;
@@ -44,6 +53,32 @@ type TestCard = {
 };
 
 const tests: TestCard[] = [
+  {
+    id: 'mbti',
+    category: '自我探索',
+    eyebrow: 'NO. 012 · 32 题｜约 6 分钟',
+    title: 'MBTI 风格性格探索',
+    description: '看看你的四维性格偏好。自编问卷，非官方 MBTI 测评，测着玩别太当真。',
+    state: 'available',
+    href: '/mbti/index.html',
+    image: '/covers/mbti.svg',
+    imageAlt: '四维性格偏好探索',
+    icon: Sparkles,
+    color: 'scent-card',
+  },
+  {
+    id: 'attachment',
+    category: '自我探索',
+    eyebrow: 'NO. 011 · 24 题｜约 5 分钟',
+    title: '成人依恋测试',
+    description: '了解亲密关系中的焦虑、回避与安全感。自编探索问卷，非临床量表。',
+    state: 'available',
+    href: '/attachment/index.html',
+    image: '/covers/attachment.svg',
+    imageAlt: '靠近：成人依恋自我探索',
+    icon: MessageCircleMore,
+    color: 'tree-card',
+  },
   {
     id: 'mushroom',
     category: '自然界',
@@ -196,8 +231,48 @@ const tests: TestCard[] = [
   },
 ];
 
-const categories = ['全部', '自然界', '观察力', '冷知识', '奇怪技能'] as const;
+const categories = ['全部', '自然界', '观察力', '冷知识', '奇怪技能', '自我探索'] as const;
 type Category = (typeof categories)[number];
+
+type MotionStyle = CSSProperties & {
+  '--motion-x'?: string;
+  '--motion-y'?: string;
+};
+
+function MagneticButton({ children, className, style, ...props }: ComponentProps<typeof Button>) {
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const wrapperRef = useRef<HTMLSpanElement>(null);
+
+  function move(event: PointerEvent<HTMLSpanElement>) {
+    if (event.pointerType === 'touch' || !wrapperRef.current) return;
+    const rect = wrapperRef.current.getBoundingClientRect();
+    setOffset({
+      x: Math.max(-7, Math.min(7, (event.clientX - (rect.left + rect.width / 2)) * 0.12)),
+      y: Math.max(-5, Math.min(5, (event.clientY - (rect.top + rect.height / 2)) * 0.12)),
+    });
+  }
+
+  return (
+    <span
+      ref={wrapperRef}
+      className="inline-flex"
+      onPointerMove={move}
+      onPointerLeave={() => setOffset({ x: 0, y: 0 })}
+    >
+      <Button
+        {...props}
+        className={`motion-magnetic ${className ?? ''}`}
+        style={{
+          ...style,
+          '--motion-x': `${offset.x}px`,
+          '--motion-y': `${offset.y}px`,
+        } as MotionStyle}
+      >
+        {children}
+      </Button>
+    </span>
+  );
+}
 
 export default function Home() {
   const [category, setCategory] = useState<Category>('全部');
@@ -230,7 +305,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const available = tests.filter((test) => test.state === 'available');
+    const available = tests.filter((test) => test.state === 'available' && test.category !== '自我探索');
     const today = new Date();
     const dayIndex = Number(`${today.getFullYear()}${String(today.getMonth() + 1).padStart(2, '0')}${String(today.getDate()).padStart(2, '0')}`);
     setDailyTestId(available[dayIndex % available.length]?.id ?? null);
@@ -367,7 +442,7 @@ export default function Home() {
             </a>
           </div>
           <span className="rounded-full border border-[#2e3552]/15 bg-[#fffaf0]/80 px-3.5 py-2 text-xs font-bold text-[#535b6c] shadow-sm">
-            已收录 10 项
+            已收录 {tests.filter((test) => test.state === 'available').length} 项
           </span>
           <nav
             aria-label="手机快捷导航"
@@ -431,21 +506,21 @@ export default function Home() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a href="#tests">
-                <Button
+                <MagneticButton
                   size="lg"
                   className="h-12 rounded-2xl bg-[#252b49] px-5 font-bold text-[#fff9ea] shadow-[4px_4px_0_#f0ad50] transition-transform active:translate-y-px hover:bg-[#373f64]"
                 >
                   开始乱逛 <ChevronRight className="size-4" />
-                </Button>
+                </MagneticButton>
               </a>
               <a href="/mushroom">
-                <Button
+                <MagneticButton
                   variant="outline"
                   size="lg"
                   className="h-12 rounded-2xl border-[#cdd1d5] bg-[#fffdf8]/75 px-5 font-bold text-[#3f4657] transition-transform active:translate-y-px hover:bg-white"
                 >
                   先测蘑菇 <ArrowUpRight className="size-4" />
-                </Button>
+                </MagneticButton>
               </a>
             </div>
           </div>
@@ -471,7 +546,7 @@ export default function Home() {
               <div className="mt-10 grid grid-cols-2 border-t border-white/15 pt-4 text-xs">
                 <div>
                   <p className="font-bold text-[#aeb5c9]">当前收录</p>
-                  <p className="mt-1 text-xl font-black text-[#f4ce67]">10</p>
+                  <p className="mt-1 text-xl font-black text-[#f4ce67]">{tests.filter((test) => test.state === 'available').length}</p>
                 </div>
                 <div className="border-l border-white/15 pl-4">
                   <p className="font-bold text-[#aeb5c9]">正在筹备</p>
@@ -480,7 +555,7 @@ export default function Home() {
               </div>
               <div className="mt-5 flex items-center justify-between border-t border-white/15 pt-3 text-[10px] font-black tracking-[0.12em] text-[#aeb5c9]">
                 <span>好奇心 · 随手测</span>
-                <span>NO. 010</span>
+                <span>NO. 012</span>
               </div>
             </div>
             <div className="absolute -bottom-5 -left-5 grid size-16 -rotate-12 place-items-center rounded-full border-[5px] border-[#fffdf7] bg-[#d85f48] text-center text-[10px] font-black leading-3 text-white shadow-md">
@@ -537,6 +612,7 @@ export default function Home() {
                 <button
                   key={item}
                   type="button"
+                  data-motion="toggle"
                   aria-pressed={category === item}
                   onClick={() => setCategory(item)}
                   className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition active:scale-[.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d85f48]/45 ${category === item ? 'bg-[#252b49] text-[#fff9ea] shadow-[3px_3px_0_#f0ad50]' : 'border border-[#d5d4ce] bg-[#fffdf8]/70 text-[#626978] hover:border-[#a9adba] hover:bg-white'}`}
@@ -562,30 +638,36 @@ export default function Home() {
             <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {visibleTests.map((test, index) => {
                 const Icon = test.icon;
+                // These covers contain their own typography, so preserve the full artwork
+                // instead of cropping the title away with object-cover.
+                const illustratedCover = test.id === 'mbti' || test.id === 'attachment' || test.id === 'mushroom' || test.id === 'bird';
+                const responsiveCover = !illustratedCover && test.image === tests.find((original) => original.id === test.id)?.image;
                 const body = (
                   <>
                     <div
-                      className={`relative h-48 overflow-hidden rounded-[1.35rem] ${test.color}`}
+                      className={`relative overflow-hidden rounded-[1.35rem] ${illustratedCover ? 'aspect-[3/2]' : 'h-48'} ${test.color}`}
                     >
                       {test.image ? (
                         <>
                           <img
                             src={test.image}
+                            srcSet={responsiveCover ? `/covers/responsive/${test.id}-480.webp 480w, /covers/responsive/${test.id}-960.webp 960w` : undefined}
+                            sizes={responsiveCover ? '(min-width: 1280px) 290px, (min-width: 768px) 46vw, 92vw' : undefined}
                             alt={test.imageAlt ?? `${test.title}测试封面`}
                             loading="lazy"
                             decoding="async"
                             onError={(event) => {
                               event.currentTarget.style.display = 'none';
                             }}
-                            className={`size-full object-cover transition duration-500 group-hover:scale-105 ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
+                            className={`size-full ${illustratedCover ? 'object-contain' : 'object-cover transition duration-500 group-hover:scale-105'} ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
                           />
-                          <div
+                          {!illustratedCover && <><div
                             aria-hidden="true"
                             className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#182033]/65 via-[#182033]/20 to-transparent"
                           />
                           <span className="absolute bottom-3 left-3 max-w-[78%] text-base font-black tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,.45)]">
                             {test.title}
-                          </span>
+                          </span></>}
                         </>
                       ) : (
                         <div className="absolute inset-0 grid place-items-center">
@@ -868,7 +950,7 @@ export default function Home() {
         <footer className="flex flex-col gap-3 border-t border-[#2b334d]/10 py-6 text-xs font-semibold leading-5 text-[#888a8f] sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:py-9">
           <p>不太正经测试中心 · 为好奇心保留一张座位</p>
           <p className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <span>第 10 期 · 反应测试已上线</span>
+            <span>第 12 期 · 依恋与性格探索已加入</span>
             <a href="/credits" className="rounded-full px-2 py-1 transition hover:bg-[#fff9eb] hover:underline">
               素材署名
             </a>

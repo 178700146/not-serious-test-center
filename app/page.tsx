@@ -645,7 +645,7 @@ export default function Home() {
                 const body = (
                   <>
                     <div
-                      className={`relative overflow-hidden rounded-[1.35rem] ${illustratedCover ? 'aspect-[3/2]' : 'h-48'} ${test.color}`}
+                      className={`relative aspect-[3/2] overflow-hidden rounded-[1.35rem] ${test.color}`}
                     >
                       {test.image ? (
                         <>

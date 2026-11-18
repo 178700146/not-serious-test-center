@@ -641,7 +641,7 @@ export default function Home() {
                 // Poster covers keep their full canvas; photo covers fill the shared 3:2 frame.
                 const illustratedCover = test.id === 'mbti' || test.id === 'attachment' || test.id === 'mushroom' || test.id === 'bird';
                 const preserveFullArtwork = test.id === 'mbti' || test.id === 'attachment';
-                const responsiveCover = !preserveFullArtwork && test.image === tests.find((original) => original.id === test.id)?.image;
+                const responsiveCover = false;
                 const body = (
                   <>
                     <div

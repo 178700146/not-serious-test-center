@@ -48,6 +48,7 @@ type TestCard = {
   href?: string;
   image?: string;
   imageAlt?: string;
+  imageSize?: readonly [width: number, height: number];
   icon: typeof Leaf;
   color: string;
 };
@@ -62,6 +63,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/mbti/index.html',
     image: '/covers/mbti.svg',
+    imageSize: [960, 640],
     imageAlt: '四维性格偏好探索',
     icon: Sparkles,
     color: 'scent-card',
@@ -75,6 +77,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/attachment/index.html',
     image: '/covers/attachment.svg',
+    imageSize: [960, 640],
     imageAlt: '靠近：成人依恋自我探索',
     icon: MessageCircleMore,
     color: 'tree-card',
@@ -88,6 +91,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/mushroom',
     image: '/covers/quizzes/mushroom.webp',
+    imageSize: [1600, 841],
     imageAlt: '蘑菇大师测试封面',
     icon: Leaf,
     color: 'mushroom-card',
@@ -101,6 +105,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/bird',
     image: '/covers/quizzes/bird.webp',
+    imageSize: [1600, 900],
     imageAlt: '观鸟大师测试封面',
     icon: Bird,
     color: 'bird-card',
@@ -114,6 +119,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/bird-calls',
     image: '/covers/bird-call-final.webp',
+    imageSize: [1536, 1024],
     imageAlt: '鸟鸣识别测试封面',
     icon: Headphones,
     color: 'bird-card',
@@ -127,6 +133,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/ultraman-face',
     image: '/covers/quizzes/ultraman-face.webp',
+    imageSize: [1600, 900],
     imageAlt: '奥特曼认脸局测试封面',
     icon: Sparkles,
     color: 'tree-card',
@@ -140,6 +147,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/ultraman-sound',
     image: '/covers/quizzes/ultraman-sound.webp',
+    imageSize: [1600, 900],
     imageAlt: '奥特曼听声局测试封面',
     icon: Sparkles,
     color: 'scent-card',
@@ -153,6 +161,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/pokemon',
     image: '/covers/quizzes/pokemon.webp',
+    imageSize: [1600, 841],
     imageAlt: '宝可梦剪影局测试封面',
     icon: Sparkles,
     color: 'scent-card',
@@ -166,6 +175,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/dialect',
     image: '/covers/quizzes/dialect.webp',
+    imageSize: [1600, 840],
     imageAlt: '方言捕手测试封面',
     icon: MessageCircleMore,
     color: 'scent-card',
@@ -179,6 +189,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/foreign-country',
     image: '/covers/foreign-country-final.webp',
+    imageSize: [1536, 1024],
     imageAlt: '外语猜国家测试封面',
     icon: Globe2,
     color: 'scent-card',
@@ -192,6 +203,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/insects',
     image: '/covers/insect-final.webp',
+    imageSize: [1536, 1024],
     imageAlt: '昆虫侦探测试封面',
     icon: Bug,
     color: 'tree-card',
@@ -205,6 +217,7 @@ const tests: TestCard[] = [
     state: 'available',
     href: '/reaction-speed',
     image: '/covers/reaction-speed-v2.webp',
+    imageSize: [1600, 900],
     imageAlt: '反应速度局测试封面',
     icon: Timer,
     color: 'scent-card',
@@ -638,44 +651,34 @@ export default function Home() {
             <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {visibleTests.map((test, index) => {
                 const Icon = test.icon;
-                // Poster covers keep their full canvas; photo covers fill the shared 3:2 frame.
-                const illustratedCover = test.id === 'mbti' || test.id === 'attachment' || test.id === 'mushroom' || test.id === 'bird';
-                const preserveFullArtwork = test.id === 'mbti' || test.id === 'attachment';
-                const responsiveCover = false;
+                const originalImage = tests.find((original) => original.id === test.id)?.image;
+                const responsiveCover = test.image === originalImage && originalImage?.endsWith('.webp');
                 const body = (
                   <>
                     <div
-                      className={`relative aspect-[3/2] overflow-hidden rounded-[1.35rem] ${test.color}`}
+                      className={`relative overflow-hidden rounded-[1.35rem] ${test.image ? '' : 'aspect-[3/2]'} ${test.color}`}
                     >
                       {test.image ? (
-                        <>
-                          {preserveFullArtwork && (
-                            <div
-                              aria-hidden="true"
-                              className="absolute inset-0 scale-110 bg-cover bg-center opacity-35 blur-md"
-                              style={{ backgroundImage: `url(${test.image})` }}
-                            />
-                          )}
-                          <img
-                            src={test.image}
-                            srcSet={responsiveCover ? `/covers/responsive/${test.id}-480.webp 480w, /covers/responsive/${test.id}-960.webp 960w` : undefined}
-                            sizes={responsiveCover ? '(min-width: 1280px) 290px, (min-width: 768px) 46vw, 92vw' : undefined}
-                            alt={test.imageAlt ?? `${test.title}测试封面`}
-                            loading="lazy"
-                            decoding="async"
-                            onError={(event) => {
-                              event.currentTarget.style.display = 'none';
-                            }}
-                            className={`relative z-[1] size-full ${preserveFullArtwork ? 'object-contain' : 'object-cover transition duration-500 group-hover:scale-105'} ${test.id === 'mushroom' ? 'object-[58%_center]' : test.id === 'bird' ? 'object-[42%_center]' : test.id === 'reaction-speed' ? 'object-[10%_top]' : ''}`}
-                          />
-                          {!illustratedCover && <><div
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#182033]/65 via-[#182033]/20 to-transparent"
-                          />
-                          <span className="absolute bottom-3 left-3 max-w-[78%] text-base font-black tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,.45)]">
-                            {test.title}
-                          </span></>}
-                        </>
+                        <img
+                          key={test.image}
+                          src={test.image}
+                          srcSet={responsiveCover ? `/covers/responsive/${test.id}-480.webp 480w, /covers/responsive/${test.id}-960.webp 960w` : undefined}
+                          sizes={responsiveCover ? '(min-width: 1280px) 255px, (min-width: 1024px) calc(50vw - 84px), (min-width: 768px) calc(50vw - 68px), (min-width: 640px) calc(100vw - 90px), calc(100vw - 66px)' : undefined}
+                          width={test.imageSize?.[0] ?? 960}
+                          height={test.imageSize?.[1] ?? 640}
+                          alt={test.imageAlt ?? `${test.title}测试封面`}
+                          loading="lazy"
+                          decoding="async"
+                          onError={({ currentTarget: image }) => {
+                            if (image.hasAttribute('srcset')) {
+                              image.removeAttribute('srcset');
+                              image.removeAttribute('sizes');
+                            } else if (originalImage && image.getAttribute('src') !== originalImage) {
+                              image.src = originalImage;
+                            }
+                          }}
+                          className="block h-auto w-full object-contain"
+                        />
                       ) : (
                         <div className="absolute inset-0 grid place-items-center">
                           <Icon
@@ -684,16 +687,16 @@ export default function Home() {
                           />
                         </div>
                       )}
-                      <span
-                        className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#fffdf8]/85 text-[#6e7381]'}`}
-                      >
-                        {test.state === 'available' ? '现在可测' : '筹备中'}
-                      </span>
                     </div>
                     <div className="px-1 pb-1 pt-5">
-                      <p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">
-                        {test.eyebrow}
-                      </p>
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-[10px] font-black tracking-[0.13em] text-[#d85f48]">
+                          {test.eyebrow}
+                        </p>
+                        <span className={`rounded-full px-2.5 py-1 text-[10px] font-black tracking-[0.08em] ${test.state === 'available' ? 'bg-[#f5cf6a] text-[#4d4025]' : 'bg-[#f3eee2] text-[#6e7381]'}`}>
+                          {test.state === 'available' ? '现在可测' : '筹备中'}
+                        </span>
+                      </div>
                       <h3 className="mt-2 text-xl font-black tracking-tight text-[#272d48]">
                         {test.title}
                       </h3>
